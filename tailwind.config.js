@@ -10,6 +10,7 @@ export default {
         textColor: "#676767",
         hightlightColor: "#212121",
         rowColor: "#1B1B1B",
+        stripeRowColor:"#202020",
         tableBgColor: "#171717",
       },
     },

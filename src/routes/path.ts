@@ -1,7 +1,7 @@
 export const paths = {
   dashboard: "/",
   admin: "/admin",
-  category: "/categeory",
+  category: "/category",
   boss: "/boss",
   user: "/user",
   login: "/login",

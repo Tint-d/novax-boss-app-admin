@@ -1,5 +1,11 @@
+import AuthLayout from "../components/AuthLayout";
+
 const BossManagement = () => {
-  return <div>BossManagement</div>;
+  return (
+    <AuthLayout>
+      <div>BossManagement</div>
+    </AuthLayout>
+  );
 };
 
 export default BossManagement;

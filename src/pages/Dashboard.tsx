@@ -1,5 +1,11 @@
+import AuthLayout from "../components/AuthLayout";
+
 const Dashboard = () => {
-  return <div>Dashboard</div>;
+  return (
+    <AuthLayout>
+      <div>Dashboard</div>
+    </AuthLayout>
+  );
 };
 
 export default Dashboard;

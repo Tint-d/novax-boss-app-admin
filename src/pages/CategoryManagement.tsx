@@ -1,5 +1,11 @@
+import AuthLayout from "../components/AuthLayout";
+
 const CategoryManagement = () => {
-  return <div>CategoryManagement</div>;
+  return (
+    <AuthLayout>
+      <div>CategoryManagement</div>
+    </AuthLayout>
+  );
 };
 
 export default CategoryManagement;

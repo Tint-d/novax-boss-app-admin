@@ -1,5 +1,11 @@
+import AuthLayout from "../components/AuthLayout";
+
 const UserManagement = () => {
-  return <div>UserManagement</div>;
+  return (
+    <AuthLayout>
+      <div>UserManagement</div>
+    </AuthLayout>
+  );
 };
 
 export default UserManagement;

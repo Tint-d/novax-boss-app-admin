@@ -2,7 +2,7 @@ import Routes from "./routes/Routes";
 
 const App = () => {
   return (
-    <div>
+    <div className="bg-bgMain h-screen">
       <Routes />
     </div>
   );

@@ -11,6 +11,7 @@ export default {
         hightlightColor: "#212121",
         rowColor: "#1B1B1B",
         tableBgColor: "#171717",
+        bgMain: "#0E0E0E",
       },
     },
     fontSize: {

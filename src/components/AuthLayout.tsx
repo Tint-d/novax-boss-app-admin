@@ -5,7 +5,7 @@ import Sidebar from "../utils/Sidebar";
 
 const AuthLayout = ({ children }: { children: ReactNode }) => {
   return (
-    <div className="w-full h-screen bg-red-300">
+    <div className="w-full h-screen bg-black">
       <Navbar />
 
       <div className="w-full h-[calc(100vh-80px)] flex">

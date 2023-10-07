@@ -1,5 +1,9 @@
 /** @type {import('tailwindcss').Config} */
+// module.exports = {
+//   important: true,
+// }
 export default {
+  important: true,
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
@@ -10,8 +14,9 @@ export default {
         textColor: "#676767",
         hightlightColor: "#212121",
         rowColor: "#1B1B1B",
-        stripeRowColor:"#202020",
         tableBgColor: "#171717",
+        bgColor: "#0E0E0E",
+        placeholderColor:"#484848"
       },
     },
     fontSize: {

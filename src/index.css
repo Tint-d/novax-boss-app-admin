@@ -8,3 +8,16 @@
 ::-webkit-scrollbar {
   display: none;
 }
+
+table,
+tr,
+td,
+thead,
+th {
+  border: none !important;
+}
+
+.mantine-Input-input::placeholder {
+  color: #484848;
+  font-size: 20px;
+}

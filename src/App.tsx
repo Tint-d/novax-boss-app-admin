@@ -2,7 +2,7 @@ import Routes from "./routes/Routes";
 
 const App = () => {
   return (
-    <div>
+    <div className="font-engFont">
       <Routes />
     </div>
   );

@@ -1,57 +1,43 @@
 import { Table } from "@mantine/core";
-import React from "react";
 import { Link } from "react-router-dom";
-
-const DailyTable = () => {
-  const elements = [
-    { id: "#1", name: "Ei Thwe", code: 2345 },
-    { id: "#1", name: "Ei Thwe", code: 2345 },
-  ];
-  const rows = elements.map((element) => (
-    <Table.Tr key={element.id}>
-      <Table.Td>
-        <p className="text-textColor text-[20px]">{element.id}</p>
-      </Table.Td>
-      <Table.Td className="text-white">
-        <div className="flex flex-col">
-          <p className="text-[10px] text-textColor">Boss</p>
-          {element.name}
-        </div>
-      </Table.Td>
-      <Table.Td className="text-white">{element.code}</Table.Td>
-    </Table.Tr>
-  ));
+// import "./dailyTable.css";
+interface PropsType {
+  rows: JSX.Element[];
+  theads: string[];
+  tableTitle: string;
+  btnName: string;
+  route: string;
+}
+const DailyTable = ({
+  rows,
+  theads,
+  tableTitle,
+  btnName,
+  route,
+}: PropsType) => {
   return (
-    <div className="bg-hightlightColor rounded-[20px] w-full h-[500px] p-[15px]">
+    <div className="bg-tableBgColor rounded-[20px] w-full  p-[15px]">
       <div className="w-full flex justify-between mb-8">
-        <p className="text-textColor text-[20px] font-[400]">Daily new Boss</p>
+        <p className="text-textColor text-[20px] font-[400]">{tableTitle}</p>
         <Link
-          to={""}
-          className="px-[20px] py-[5px] bg-gray-300 text-textColor rounded-full text-[20px] font-[400]"
+          to={route}
+          className="px-[20px] py-[5px] bg-hightlightColor text-textColor rounded-full text-[20px] font-[400]"
         >
-          Review
+          {btnName}
         </Link>
       </div>
       <div className="w-full rounded-t-[10px] overflow-hidden">
-        <Table
-          striped="even"
-          stripedColor="blue"
-          classNames={{
-            table: "w-full text-left",
-            thead: "text-[20px] font-[700] bg-warining h-[58px]",
-            th: "px-[20px]",
-            td: "text-[15px] font-[400] px-[20px]",
-            tr: "h-[58px]",
-          }}
-        >
-          <Table.Thead>
-            <Table.Tr>
-              <Table.Th>No</Table.Th>
-              <Table.Th>Name</Table.Th>
-              <Table.Th>Code</Table.Th>
-            </Table.Tr>
-          </Table.Thead>
-          <Table.Tbody>{rows}</Table.Tbody>
+        <Table className="w-full text-left">
+          <thead className=" font-[700] bg-warining h-[58px] ">
+            <tr className="h-[58px]">
+              {theads.map((item, i) => (
+                <th key={i} className="px-[20px] text-[20px] text-black">
+                  {item}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>{rows}</tbody>
         </Table>
       </div>
     </div>

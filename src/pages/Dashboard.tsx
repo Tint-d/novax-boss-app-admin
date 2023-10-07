@@ -1,12 +1,24 @@
 import AuthLayout from "../components/AuthLayout";
-import DailyTable from "../components/DailyTable";
+
+import DailyBossTable from "../components/DailyBossTable";
+import DailyNewUserTable from "../components/DailyNewUserTable";
+import StatCard from "../components/StatCard";
 
 const Dashboard = () => {
   return (
     <AuthLayout>
-      <div className="w-full h-[1000px] bg-tableBgColor">
-        <h1>Dashboard</h1>
-        <DailyTable/>
+      <div className="w-full bg-black p-8">
+        <div className="flex gap-8 mb-8">
+          <div className="flex gap-8 items-start">
+            <StatCard name="Boss" quantity={1200} />
+            <StatCard name="Boss" quantity={1200} />
+          </div>
+          <div className="w-full h-[300px] bg-tableBgColor" />
+        </div>
+        <div className="w-full flex gap-8">
+          <DailyBossTable />
+          <DailyNewUserTable />
+        </div>
       </div>
     </AuthLayout>
   );

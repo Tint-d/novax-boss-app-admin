@@ -7,7 +7,6 @@ import StatCard from "../components/StatCard";
 const Dashboard = () => {
   return (
     <AuthLayout>
-      <div className="w-full bg-black p-8">
         <div className="flex gap-8 mb-8">
           <div className="flex gap-8 items-start">
             <StatCard name="Boss" quantity={1200} />
@@ -19,7 +18,6 @@ const Dashboard = () => {
           <DailyBossTable />
           <DailyNewUserTable />
         </div>
-      </div>
     </AuthLayout>
   );
 };

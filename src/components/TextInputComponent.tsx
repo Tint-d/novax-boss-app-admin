@@ -1,13 +1,13 @@
 import { TextInput } from "@mantine/core";
 
 import { UseFormReturnType } from "@mantine/form";
-import { AddBossFormValues } from "../typings/type";
+import { FormValues } from "../typings/type";
 import { ReactNode } from "react";
 
 interface PropsType {
   label: string;
   placeholder: string;
-  form: UseFormReturnType<AddBossFormValues>;
+  form: UseFormReturnType<FormValues>;
   value: string;
   rightSectionBtn?: ReactNode;
 }

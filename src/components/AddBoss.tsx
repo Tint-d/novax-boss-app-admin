@@ -1,6 +1,6 @@
 import { useForm } from "@mantine/form";
-import FormCard from "./FormCard";
 
+import FormCard from "./FormCard";
 import TextInputComponent from "./TextInputComponent";
 import { AddBossFormValues } from "../typings/type";
 import SaveButton from "./SaveButton";
@@ -13,6 +13,7 @@ const AddBoss = () => {
       code: "",
     },
   });
+
   return (
     <FormCard title="Add New Boss">
       <form

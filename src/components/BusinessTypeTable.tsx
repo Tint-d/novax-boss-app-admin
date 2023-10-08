@@ -1,51 +1,19 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { AiOutlineEye } from "react-icons/ai";
 import { FiEdit } from "react-icons/fi";
 import { BsTrash } from "react-icons/bs";
 
 import SearchTable from "./SearchTable";
+import { bossTypeData } from "../config/constant";
 
-const BossTable = () => {
+const BusinessTypeTable = () => {
   const [page, setPage] = useState<number>(1);
   const [value, setValue] = useState<string>("");
   console.log(page);
   console.log(value);
-  const elements = [
-    {
-      id: "#1",
-      name: "Ko Han Thu Zaw",
-      code: "NBT-204",
-      addressCode: "BAPM-ND323ADV",
-    },
-    {
-      id: "#2",
-      name: "Ko Kaung Sett",
-      code: "NBT-202",
-      addressCode: "ADC-IE2REWV9",
-    },
-    {
-      id: "#3",
-      name: "Ma Ei Myat Thwe",
-      code: "NBT-203",
-      addressCode: "ADC-WEY42BSY",
-    },
-    {
-      id: "#4",
-      name: "Daw Kye Mya",
-      code: "NBT-205",
-      addressCode: "ADC-ZBE23SNW",
-    },
-    {
-      id: "#5",
-      name: "U Khine Lin",
-      code: "NBT-209",
-      addressCode: "ADC-23N3G42S",
-    },
-  ];
 
-  const theads = ["No", "Name", "Code", "Address Code", "Action"];
-
-  const rows = elements.map((element, index) => (
+  const theads = ["No", "English Type", "Myanmar Type", "Action"];
+  const rows = bossTypeData.map((element, index) => (
     <tr
       key={element.id}
       className={` ${index % 2 === 1 ? "bg-hightlightColor" : "bg-rowColor"}`}
@@ -54,16 +22,10 @@ const BossTable = () => {
         <p className="text-textColor text-[20px] font-[400]">{element.id}</p>
       </td>
       <td className="text-white text-[18px] font-[400] px-[20px]">
-        <div className="flex flex-col">
-          <p className="text-[10px] text-textColor">Boss</p>
-          <p className=""> {element.name}</p>
-        </div>
+        {element.englishType}
       </td>
       <td className="text-white text-[18px] font-[400] px-[20px]">
-        {element.code}
-      </td>
-      <td className="text-white text-[18px] font-[400] px-[20px]">
-        {element.addressCode}
+        {element.myanmarType}
       </td>
       <td>
         <div className="flex gap-5">
@@ -87,7 +49,7 @@ const BossTable = () => {
     <SearchTable
       rows={rows}
       theads={theads}
-      tableTitle="Boss Table"
+      tableTitle={"Cities"}
       setPage={setPage}
       value={value}
       setValue={setValue}
@@ -97,4 +59,4 @@ const BossTable = () => {
   );
 };
 
-export default BossTable;
+export default BusinessTypeTable;

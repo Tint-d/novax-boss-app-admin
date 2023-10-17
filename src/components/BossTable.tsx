@@ -1,69 +1,55 @@
-import { useState } from "react";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useState, useEffect } from "react";
 import { AiOutlineEye } from "react-icons/ai";
 import { FiEdit } from "react-icons/fi";
 import { BsTrash } from "react-icons/bs";
 
 import SearchTable from "./SearchTable";
+import { useGetDataQuery } from "../redux/api/adminApi";
+import { useDebouncedValue } from "@mantine/hooks";
+import useTable from "../hooks/useTable";
+import useMutation from "../hooks/useMutation";
 
 const BossTable = () => {
-  const [page, setPage] = useState<number>(1);
-  const [value, setValue] = useState<string>("");
-  console.log(page);
-  console.log(value);
-  const elements = [
-    {
-      id: "#1",
-      name: "Ko Han Thu Zaw",
-      code: "NBT-204",
-      addressCode: "BAPM-ND323ADV",
-    },
-    {
-      id: "#2",
-      name: "Ko Kaung Sett",
-      code: "NBT-202",
-      addressCode: "ADC-IE2REWV9",
-    },
-    {
-      id: "#3",
-      name: "Ma Ei Myat Thwe",
-      code: "NBT-203",
-      addressCode: "ADC-WEY42BSY",
-    },
-    {
-      id: "#4",
-      name: "Daw Kye Mya",
-      code: "NBT-205",
-      addressCode: "ADC-ZBE23SNW",
-    },
-    {
-      id: "#5",
-      name: "U Khine Lin",
-      code: "NBT-209",
-      addressCode: "ADC-23N3G42S",
-    },
-  ];
+  const { setPage, page, value, setValue, data, total, totalPage, isLoading } =
+    useTable("admin/user/action-code/list", "data");
+
+  const { mutate: deleteBoss } = useMutation();
+
+  const onDeleteHandler = async (id: number) => {
+    // console.log(id);
+    const data = await deleteBoss({
+      url: `admin/boss-address/delete/${id}`,
+      body: {},
+      method: "DELETE",
+    });
+    console.log(data);
+  };
 
   const theads = ["No", "Name", "Code", "Address Code", "Action"];
 
-  const rows = elements.map((element, index) => (
+  const rows = data?.map((element: any, index: number) => (
     <tr
       key={element.id}
       className={` ${index % 2 === 1 ? "bg-hightlightColor" : "bg-rowColor"}`}
     >
       <td className=" px-[20px]">
-        <p className="text-textColor text-[20px] font-[400]">{element.id}</p>
+        <p className="text-textColor text-[20px] font-[400]">
+          {(page - 1) * 20 + index + 1}
+        </p>
       </td>
       <td className="text-white text-[18px] font-[400] px-[20px]">
         <div className="flex flex-col">
           <p className="text-[10px] text-textColor">Boss</p>
-          <p className=""> {element.name}</p>
+          <p className=""> {element.boss_name}</p>
         </div>
       </td>
       <td className="text-white text-[18px] font-[400] px-[20px]">
-        {element.code}
+        {element.boss_number}
       </td>
       <td className="text-white text-[18px] font-[400] px-[20px]">
-        {element.addressCode}
+        {element.code}
       </td>
       <td>
         <div className="flex gap-5">
@@ -75,7 +61,7 @@ const BossTable = () => {
             <FiEdit className="text-[25px] text-hightlightColor" />
           </button>
 
-          <button className="w-10 h-10 rounded-xl bg-red-800 flex justify-center items-center">
+          <button onClick={()=>onDeleteHandler(element.id)} className="w-10 h-10 rounded-xl bg-red-800 flex justify-center items-center">
             <BsTrash className="text-[25px] text-white opacity-50" />
           </button>
         </div>
@@ -85,14 +71,15 @@ const BossTable = () => {
 
   return (
     <SearchTable
+      isLoading={isLoading}
       rows={rows}
       theads={theads}
       tableTitle="Boss Table"
       setPage={setPage}
       value={value}
       setValue={setValue}
-      total={1200}
-      totalPages={120}
+      total={total}
+      totalPages={totalPage}
     />
   );
 };

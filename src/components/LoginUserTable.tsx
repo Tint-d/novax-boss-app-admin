@@ -1,29 +1,30 @@
-import { useState } from "react";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { AiOutlineEye } from "react-icons/ai";
 import { BsTrash } from "react-icons/bs";
 
-import { facebookLoginUserData } from "../config/constant";
 import SearchTable from "./SearchTable";
+import useTable from "../hooks/useTable";
 
 interface PropsType {
   tableTitle: string;
+  type: string;
 }
 
-const LoginUserTable = ({ tableTitle }: PropsType) => {
-  const [page, setPage] = useState<number>(1);
-  const [value, setValue] = useState<string>("");
-  console.log(page);
-  console.log(value);
+const LoginUserTable = ({ tableTitle, type }: PropsType) => {
+  const { page, setPage, value, setValue, data, total, totalPage, isLoading } =
+    useTable(`admin/user/list/${type}`, "users");
 
   const theads = ["No", "Name", "Email", "Action"];
 
-  const rows = facebookLoginUserData.map((element, index) => (
+  const rows = data.map((element: any, index: number) => (
     <tr
       key={element.id}
       className={` ${index % 2 === 1 ? "bg-hightlightColor" : "bg-rowColor"}`}
     >
       <td className=" px-[20px]">
-        <p className="text-textColor text-[20px] font-[400]">{element.id}</p>
+        <p className="text-textColor text-[20px] font-[400]">
+          {(page - 1) * 10 + index + 1}
+        </p>
       </td>
       <td className="text-white text-[18px] font-[400] px-[20px]">
         <div className="flex flex-col">
@@ -50,14 +51,15 @@ const LoginUserTable = ({ tableTitle }: PropsType) => {
 
   return (
     <SearchTable
+      isLoading={isLoading}
       rows={rows}
       theads={theads}
       tableTitle={tableTitle}
       setPage={setPage}
       value={value}
       setValue={setValue}
-      total={1200}
-      totalPages={120}
+      total={total}
+      totalPages={totalPage}
     />
   );
 };

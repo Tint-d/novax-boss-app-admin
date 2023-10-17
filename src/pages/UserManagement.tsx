@@ -5,8 +5,8 @@ const UserManagement = () => {
   return (
     <AuthLayout>
       <div className="flex flex-col gap-8">
-        <LoginUserTable tableTitle="Facebook Login User" />
-        <LoginUserTable tableTitle="Mail Login User" />
+        <LoginUserTable tableTitle="Facebook Login User" type="facebook" />
+        <LoginUserTable tableTitle="Mail Login User" type="normal" />
       </div>
     </AuthLayout>
   );

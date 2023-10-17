@@ -4,14 +4,14 @@ import DailyTable from "./DailyTable";
 const DailyBossTable = () => {
   const elements = [
     { id: "#1", name: "Ei Thwe", code: 2345 },
-    { id: "#1", name: "Ei Thwe", code: 2345 },
-    { id: "#1", name: "Ei Thwe", code: 2345 },
+    { id: "#2", name: "Ei Thwe", code: 2345 },
+    { id: "#3", name: "Ei Thwe", code: 2345 },
   ];
   const theads = ["No", "Name", "Code"];
 
   const rows = elements.map((element, index) => (
     <tr
-      key={element.id}
+      key={index}
       className={` ${
         index % 2 === 1 ? "bg-hightlightColor" : "bg-rowColor"
       }`}

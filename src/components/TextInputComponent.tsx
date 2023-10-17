@@ -29,7 +29,7 @@ const TextInputComponent = ({
       }}
       rightSection={rightSectionBtn}
       rightSectionWidth={200}
-      {...form.getInputProps(value)}
+     {...form.getInputProps(value)}
     />
   );
 };

@@ -1,19 +1,18 @@
-import React, { useState } from "react";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { AiOutlineEye } from "react-icons/ai";
 import { FiEdit } from "react-icons/fi";
 import { BsTrash } from "react-icons/bs";
 
 import SearchTable from "./SearchTable";
-import { bossTypeData } from "../config/constant";
+
+import useTable from "../hooks/useTable";
 
 const BusinessTypeTable = () => {
-  const [page, setPage] = useState<number>(1);
-  const [value, setValue] = useState<string>("");
-  console.log(page);
-  console.log(value);
+  const { setPage, value, setValue, data, total, totalPage, isLoading } =
+    useTable("admin/address-category/list", "categories");
 
   const theads = ["No", "English Type", "Myanmar Type", "Action"];
-  const rows = bossTypeData.map((element, index) => (
+  const rows = data.map((element: any, index: number) => (
     <tr
       key={element.id}
       className={` ${index % 2 === 1 ? "bg-hightlightColor" : "bg-rowColor"}`}
@@ -22,10 +21,10 @@ const BusinessTypeTable = () => {
         <p className="text-textColor text-[20px] font-[400]">{element.id}</p>
       </td>
       <td className="text-white text-[18px] font-[400] px-[20px]">
-        {element.englishType}
+        {element.category_name}
       </td>
       <td className="text-white text-[18px] font-[400] px-[20px]">
-        {element.myanmarType}
+        {element.category_mm_name}
       </td>
       <td>
         <div className="flex gap-5">
@@ -47,14 +46,15 @@ const BusinessTypeTable = () => {
 
   return (
     <SearchTable
+      isLoading={isLoading}
       rows={rows}
       theads={theads}
-      tableTitle={"Cities"}
+      tableTitle={"Business Type"}
       setPage={setPage}
       value={value}
       setValue={setValue}
-      total={1200}
-      totalPages={120}
+      total={total}
+      totalPages={totalPage}
     />
   );
 };

@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useForm } from "@mantine/form";
 
 import FormCard from "./FormCard";
 import TextInputComponent from "./TextInputComponent";
 import { AddBossFormValues } from "../typings/type";
 import SaveButton from "./SaveButton";
+import useMutation from "../hooks/useMutation";
 
 const AddBoss = () => {
   const form = useForm<AddBossFormValues>({
@@ -14,10 +16,41 @@ const AddBoss = () => {
     },
   });
 
+  const { mutate: generateCode } = useMutation();
+  const { mutate: submitCode } = useMutation();
+  // const {data,}
+
+  const onGenerateCodeHandler = async () => {
+    const data = await generateCode({
+      url: "admin/user/action-code/generate/code",
+      body: {},
+      method: "GET",
+    });
+
+    form.setFieldValue("code", data?.data?.code);
+  };
+
+  const onGenerateCodeSubmitHandler = (values: AddBossFormValues) => {
+    console.log(values);
+    submitCode({
+      url: "admin/user/action-code/generate",
+      body: {
+        boss_name: values.name,
+        boss_number: values.number,
+        code: values.code,
+      },
+      method: "POST",
+    });
+
+    form.reset();
+  };
+
   return (
     <FormCard title="Add New Boss">
       <form
-        onSubmit={form.onSubmit((values) => console.log(values))}
+        onSubmit={form.onSubmit((values) =>
+          onGenerateCodeSubmitHandler(values)
+        )}
         className="w-full grid grid-cols-5 gap-8"
       >
         <div className="col-span-2 flex flex-col gap-6">
@@ -41,12 +74,16 @@ const AddBoss = () => {
             form={form}
             value="code"
             rightSectionBtn={
-              <button className="px-5 py-[6px] -mr-[10px] bg-warining text-hightlightColor font-[500] text-[20px] rounded-full">
+              <button
+                type="button"
+                onClick={onGenerateCodeHandler}
+                className="px-5 py-[6px] -mr-[10px] bg-warining text-hightlightColor font-[500] text-[20px] rounded-full"
+              >
                 Generate Code
               </button>
             }
           />
-          <SaveButton />
+          <SaveButton type="submit" />
         </div>
       </form>
     </FormCard>

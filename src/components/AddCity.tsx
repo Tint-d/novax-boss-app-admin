@@ -4,6 +4,7 @@ import FormCard from "./FormCard";
 import { AddBusinessTypeFormValues } from "../typings/type";
 import TextInputComponent from "./TextInputComponent";
 import SaveButton from "./SaveButton";
+import useMutation from "../hooks/useMutation";
 
 const AddCity = () => {
   const form = useForm<AddBusinessTypeFormValues>({
@@ -13,9 +14,24 @@ const AddCity = () => {
     },
   });
 
+  const { mutate: addCity, isLoading } = useMutation();
+
+  console.log(isLoading);
+
+  const onCreateCity = (values: AddBusinessTypeFormValues) => {
+    addCity({
+      url: "admin/cities/create",
+      body: {
+        city_name: values.english,
+        city_mm_name: values.myanmar,
+      },
+      method: "POST",
+    });
+  };
+
   return (
     <FormCard title="Add New City">
-      <form onSubmit={form.onSubmit((values) => console.log(values))}>
+      <form onSubmit={form.onSubmit((values) => onCreateCity(values))}>
         <div className="flex flex-col gap-6">
           <TextInputComponent
             form={form}
@@ -29,7 +45,7 @@ const AddCity = () => {
             placeholder="text type"
             value="myanmar"
           />
-          <SaveButton />
+          <SaveButton type="submit" />
         </div>
       </form>
     </FormCard>

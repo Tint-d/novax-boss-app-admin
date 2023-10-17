@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { SerializedError } from "@reduxjs/toolkit";
+import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 import { ReactNode } from "react";
 import { IconType } from "react-icons";
 
@@ -31,4 +34,31 @@ export interface AddAdminFormValues {
 export interface FormValues
   extends AddBossFormValues,
     AddBusinessTypeFormValues,
-    AddAdminFormValues {}
+    AddAdminFormValues,
+    GetPasswordType {}
+
+export interface UseTableReturnProps {
+  page: number;
+  setPage: React.Dispatch<React.SetStateAction<number>>;
+  value: string;
+  setValue: React.Dispatch<React.SetStateAction<string>>;
+  setData: React.Dispatch<React.SetStateAction<any>>;
+  data: any;
+  total: number;
+  totalPage: number;
+  error: FetchBaseQueryError | SerializedError | undefined;
+  isLoading: boolean;
+}
+
+export interface MutationQueryProps {
+  url: string;
+  body: object;
+  method: string;
+}
+
+export interface GetPasswordType {
+  adminKey?: string;
+  id?: string;
+}
+
+export interface ModalFormValues extends GetPasswordType {}

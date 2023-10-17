@@ -14,9 +14,7 @@ const AddCity = () => {
     },
   });
 
-  const { mutate: addCity, isLoading } = useMutation();
-
-  console.log(isLoading);
+  const { mutate: addCity, isLoading } = useMutation(form);
 
   const onCreateCity = (values: AddBusinessTypeFormValues) => {
     addCity({
@@ -45,7 +43,7 @@ const AddCity = () => {
             placeholder="text type"
             value="myanmar"
           />
-          <SaveButton type="submit" />
+          <SaveButton type="submit" isLoading={isLoading} />
         </div>
       </form>
     </FormCard>

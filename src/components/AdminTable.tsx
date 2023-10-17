@@ -41,7 +41,8 @@ const AdminTable = () => {
     isLoading,
   } = useTable("admin/list", "admins");
 
-  const { mutate: getPassword } = useMutation();
+  const { mutate: getPassword, isLoading: getPasswordLoading } =
+    useMutation(form);
 
   const onGetPasswordHandler = async (values: GetPasswordType) => {
     const response = await getPassword({
@@ -51,11 +52,16 @@ const AdminTable = () => {
     });
 
     if (response) {
-      const { admin } = response.data;
+      const { admin } = response;
+
+      console.log(admin);
 
       setData((prevData: any) => {
         return prevData.map((data: any) => {
-          if (data.id == admin?.id) data["password"] = admin?.password;
+          const newData = data;
+          if (data.id == admin?.id) {
+            return { ...newData, password: admin.password };
+          }
           return data;
         });
       });
@@ -132,7 +138,11 @@ const AdminTable = () => {
           value="adminKey"
         />
 
-        <SaveButton type="submit" name="Get Password" />
+        <SaveButton
+          type="submit"
+          name="Get Password"
+          isLoading={getPasswordLoading}
+        />
       </ModalBox>
     </>
   );

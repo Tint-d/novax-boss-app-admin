@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useForm } from "@mantine/form";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 import FormCard from "./FormCard";
 import TextInputComponent from "./TextInputComponent";
@@ -16,9 +17,11 @@ const AddBoss = () => {
     },
   });
 
-  const { mutate: generateCode } = useMutation();
-  const { mutate: submitCode } = useMutation();
-  // const {data,}
+  const { mutate: generateCode, isLoading: generateCodeLoading } = useMutation(
+    form,
+    false
+  );
+  const { mutate: submitCode, isLoading: submitLoading } = useMutation(form);
 
   const onGenerateCodeHandler = async () => {
     const data = await generateCode({
@@ -27,11 +30,10 @@ const AddBoss = () => {
       method: "GET",
     });
 
-    form.setFieldValue("code", data?.data?.code);
+    form.setFieldValue("code", data?.code);
   };
 
   const onGenerateCodeSubmitHandler = (values: AddBossFormValues) => {
-    console.log(values);
     submitCode({
       url: "admin/user/action-code/generate",
       body: {
@@ -41,8 +43,6 @@ const AddBoss = () => {
       },
       method: "POST",
     });
-
-    form.reset();
   };
 
   return (
@@ -79,11 +79,15 @@ const AddBoss = () => {
                 onClick={onGenerateCodeHandler}
                 className="px-5 py-[6px] -mr-[10px] bg-warining text-hightlightColor font-[500] text-[20px] rounded-full"
               >
-                Generate Code
+                {generateCodeLoading ? (
+                  <AiOutlineLoading3Quarters className="text-[24px] mx-auto animate-spin" />
+                ) : (
+                  "Generate Code"
+                )}
               </button>
             }
           />
-          <SaveButton type="submit" />
+          <SaveButton type="submit" isLoading={submitLoading} />
         </div>
       </form>
     </FormCard>

@@ -52,7 +52,7 @@ export interface UseTableReturnProps {
 
 export interface MutationQueryProps {
   url: string;
-  body: object;
+  body: any;
   method: string;
 }
 
@@ -62,3 +62,14 @@ export interface GetPasswordType {
 }
 
 export interface ModalFormValues extends GetPasswordType {}
+
+export interface GenerateCodeResponseType {
+  code: string;
+}
+
+export interface BaseApiResponseType extends GenerateCodeResponseType {
+  success: boolean;
+  message: string;
+  data: object;
+  error: FetchBaseQueryError | SerializedError;
+}

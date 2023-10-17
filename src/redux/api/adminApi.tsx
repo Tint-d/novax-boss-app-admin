@@ -1,7 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import config from "../../config/config";
-import { MutationQueryProps } from "../../typings/type";
+import {
+  BaseApiResponseType,
+  GenerateCodeResponseType,
+  MutationQueryProps,
+} from "../../typings/type";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: config.baseUrl, // Your API base URL
@@ -21,7 +25,7 @@ export const adminApi = createApi({
       query: (url: string) => url,
       providesTags: [{ type: "Data" }],
     }),
-    postData: builder.mutation<any, MutationQueryProps>({
+    postData: builder.mutation<BaseApiResponseType, MutationQueryProps>({
       query: ({ url, body, method }: MutationQueryProps) => {
         return method === "GET"
           ? { url, method }

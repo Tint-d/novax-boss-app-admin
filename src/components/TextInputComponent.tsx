@@ -11,6 +11,7 @@ interface PropsType {
   value: string;
   rightSectionBtn?: ReactNode;
 }
+
 const TextInputComponent = ({
   label,
   placeholder,
@@ -29,7 +30,7 @@ const TextInputComponent = ({
       }}
       rightSection={rightSectionBtn}
       rightSectionWidth={200}
-     {...form.getInputProps(value)}
+      {...form.getInputProps(value)}
     />
   );
 };

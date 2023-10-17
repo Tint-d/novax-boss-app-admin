@@ -1,5 +1,5 @@
 import { Group, Pagination } from "@mantine/core";
-import React from "react";
+
 import {
   MdKeyboardDoubleArrowLeft,
   MdKeyboardDoubleArrowRight,
@@ -22,16 +22,18 @@ const PaginationComponent = ({ setPage, totalPages }: PropsType) => {
           "rounded-full border-transparent text-textColor bg-rowColor text-[20px] w-10 h-10",
         dots: "text-white",
       }}
-      styles={{
-        control: {
-          "&.mantine-Pagination-control[data-active]": {
-            backgroundColor: "#212121 !important",
-            color: "#DCA715 !important",
-          },
-        },
-      }}
+      styles={
+        {
+          // control: {
+          //   "&.mantine-Pagination-control[data-active]": {
+          //     backgroundColor: "#212121 !important",
+          //     color: "#DCA715 !important",
+          //   },
+          // },
+        }
+      }
     >
-      <Group spacing={7} position="center">
+      <Group>
         <Pagination.Previous
           icon={MdKeyboardDoubleArrowLeft}
           className="border !border-warining text-warining"

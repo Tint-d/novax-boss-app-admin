@@ -1,12 +1,12 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { lazy, Suspense } from "react";
-import Fallback from "../utils/Fallback";
-import { paths } from "./path";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import AdminManagement from "../pages/AdminManagement";
 import BossManagement from "../pages/BossManagement";
+import CategoryManagement from "../pages/CategoryManagement";
 import Dashboard from "../pages/Dashboard";
 import UserManagement from "../pages/UserManagement";
-import CategoryManagement from "../pages/CategoryManagement";
-import AdminManagement from "../pages/AdminManagement";
+import Fallback from "../utils/Fallback";
+import { paths } from "./path";
 const Register = lazy(() => import("../pages/Register"));
 const Login = lazy(() => import("../pages/Login"));
 

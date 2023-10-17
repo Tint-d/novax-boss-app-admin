@@ -1,7 +1,7 @@
-import React from "react";
 
-import DailyTable from "./DailyTable";
+
 import { IoPersonCircleOutline } from "react-icons/io5";
+import DailyTable from "./DailyTable";
 
 const DailyNewUserTable = () => {
   const elements = [

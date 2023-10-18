@@ -7,32 +7,29 @@ import { BsTrash } from "react-icons/bs";
 import SearchTable from "./SearchTable";
 
 import useTable from "../hooks/useTable";
-import useMutation from "../hooks/useMutation";
 import useTableEdit from "../hooks/useTableEdit";
 import EditCity from "./EditCity";
 import useTableDelete from "../hooks/useTableDelete";
 
 const CityTable = () => {
-  const { form, close, opened } = useTableEdit({
+  const { form, open, close, opened } = useTableEdit({
     id: "",
     english: "",
     myanmar: "",
   });
-  const { setPage, value, setValue, data, total, totalPage, isLoading, page } =
+  const { setPage, value, setValue, data, total, totalPage, isLoading } =
     useTable("admin/cities/list", "cities");
-  const useDelete = useTableDelete();
+  const { useDelete } = useTableDelete();
 
-  const { onDeleteHandler } = useMutation();
+  const onEditHandler = (element: any) => {
+    form.setValues({
+      id: element.id,
+      english: element.city_name,
+      myanmar: element.city_mm_name,
+    });
 
-  // const onDeleteHandler = async (id: number) => {
-  //   console.log(id);
-  //   const data = await deleteBoss({
-  //     url: `admin/cities/delete/${id}`,
-  //     body: {},
-  //     method: "DELETE",
-  //   });
-  //   console.log(data);
-  // };
+    open();
+  };
 
   const theads = ["No", "English Name", "Myanmar Name", "Action"];
   const rows = data.map((element: any, index: number) => (
@@ -41,9 +38,7 @@ const CityTable = () => {
       className={` ${index % 2 === 1 ? "bg-hightlightColor" : "bg-rowColor"}`}
     >
       <td className=" px-[20px]">
-        <p className="text-textColor text-[20px] font-[400]">
-          {(page - 1) * 20 + index + 1}
-        </p>
+        <p className="text-textColor text-[20px] font-[400]">{element.id}</p>
       </td>
       <td className="text-white text-[18px] font-[400] px-[20px]">
         {element.city_name}
@@ -58,14 +53,14 @@ const CityTable = () => {
           </button>
 
           <button
-            // onClick={() => onEditHandler(element)}
+            onClick={() => onEditHandler(element)}
             className="w-10 h-10 rounded-xl bg-warining flex justify-center items-center"
           >
             <FiEdit className="text-[25px] text-hightlightColor" />
           </button>
 
           <button
-            onClick={() => onDeleteHandler(`admin/cities/delete/${element.id}`)}
+            onClick={() => useDelete(`admin/cities/delete/${element.id}`)}
             className="w-10 h-10 rounded-xl bg-red-800 flex justify-center items-center"
           >
             <BsTrash className="text-[25px] text-white opacity-50" />

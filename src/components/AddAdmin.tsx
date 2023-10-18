@@ -15,9 +15,7 @@ const AddAdmin = () => {
     },
   });
 
-  const { mutate: adminCreate, isLoading } = useMutation();
-
-  console.log(isLoading);
+  const { mutate: adminCreate, isLoading } = useMutation(form);
 
   return (
     <FormCard title="Add New Admin">
@@ -57,7 +55,7 @@ const AddAdmin = () => {
               value="password"
             />
 
-            <SaveButton />
+            <SaveButton isLoading={isLoading} type="submit" />
           </div>
         </div>
       </form>

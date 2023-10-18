@@ -9,20 +9,39 @@ import { BsTrash } from "react-icons/bs";
 import SearchTable from "./SearchTable";
 // import { parsePasswordType } from "../libs/function";
 import useTable from "../hooks/useTable";
-import { GetPasswordType } from "../typings/type";
+import { AdminUpdateType, GetPasswordType } from "../typings/type";
 import ModalBox from "./ModalBox";
 import SaveButton from "./SaveButton";
 import TextInputComponent from "./TextInputComponent";
 import useMutation from "../hooks/useMutation";
+import useTableEdit from "../hooks/useTableEdit";
+import EditAdmin from "./EditAdmin";
+import DeleteAdmin from "./DeleteAdmin";
 
 const AdminTable = () => {
-  // const [page, setPage] = useState<number>(1);
-  // const [value, setValue] = useState<string>("");
-  // console.log(page);
-  // console.log(value);
-
   const [opened, { open, close }] = useDisclosure(false);
+  const [deleteOpened, { open: deleteOpen, close: deleteClose }] =
+    useDisclosure(false);
 
+  const {
+    form: updateForm,
+    close: updateClose,
+    open: updateOpen,
+    opened: updateOpened,
+  } = useTableEdit({
+    id: "",
+    adminKey: "",
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  const deleteForm = useForm<AdminUpdateType>({
+    initialValues: {
+      adminKey: "",
+      id: "",
+    },
+  });
   const form = useForm<GetPasswordType>({
     initialValues: {
       adminKey: "",
@@ -41,7 +60,8 @@ const AdminTable = () => {
     isLoading,
   } = useTable("admin/list", "admins");
 
-  const { mutate: getPassword } = useMutation();
+  const { mutate: getPassword, isLoading: getPasswordLoading } =
+    useMutation(form);
 
   const onGetPasswordHandler = async (values: GetPasswordType) => {
     const response = await getPassword({
@@ -51,15 +71,36 @@ const AdminTable = () => {
     });
 
     if (response) {
-      const { admin } = response.data;
+      const { admin } = response;
 
       setData((prevData: any) => {
         return prevData.map((data: any) => {
-          if (data.id == admin?.id) data["password"] = admin?.password;
+          const newData = data;
+          if (data.id == admin?.id) {
+            return { ...newData, password: admin.password };
+          }
           return data;
         });
       });
     }
+  };
+
+  const onEditHandler = (element: any) => {
+    updateForm.setValues({
+      id: element.id,
+      adminKey: "",
+      name: element.name,
+      email: element.email,
+      password: "",
+    });
+
+    updateOpen();
+  };
+
+  const onDeleteHandler = (id: string) => {
+    deleteForm.setFieldValue("id", id);
+
+    deleteOpen();
   };
 
   const theads = ["No", "Name", "Email", "Password", "Action"];
@@ -93,11 +134,17 @@ const AdminTable = () => {
       </td>
       <td>
         <div className="flex gap-5">
-          <button className="w-10 h-10 rounded-xl bg-warining flex justify-center items-center">
+          <button
+            onClick={() => onEditHandler(element)}
+            className="w-10 h-10 rounded-xl bg-warining flex justify-center items-center"
+          >
             <FiEdit className="text-[25px] text-hightlightColor" />
           </button>
 
-          <button className="w-10 h-10 rounded-xl bg-red-800 flex justify-center items-center">
+          <button
+            onClick={() => onDeleteHandler(element.id)}
+            className="w-10 h-10 rounded-xl bg-red-800 flex justify-center items-center"
+          >
             <BsTrash className="text-[25px] text-white opacity-50" />
           </button>
         </div>
@@ -132,8 +179,25 @@ const AdminTable = () => {
           value="adminKey"
         />
 
-        <SaveButton type="submit" name="Get Password" />
+        <SaveButton
+          type="submit"
+          name="Get Password"
+          isLoading={getPasswordLoading}
+        />
       </ModalBox>
+
+      <EditAdmin
+        setData={setData}
+        form={updateForm}
+        close={updateClose}
+        opened={updateOpened}
+      />
+
+      <DeleteAdmin
+        form={deleteForm}
+        close={deleteClose}
+        opened={deleteOpened}
+      />
     </>
   );
 };

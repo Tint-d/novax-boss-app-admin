@@ -61,7 +61,10 @@ const BossTable = () => {
             <FiEdit className="text-[25px] text-hightlightColor" />
           </button>
 
-          <button onClick={()=>onDeleteHandler(element.id)} className="w-10 h-10 rounded-xl bg-red-800 flex justify-center items-center">
+          <button
+            onClick={() => onDeleteHandler(element.id)}
+            className="w-10 h-10 rounded-xl bg-red-800 flex justify-center items-center"
+          >
             <BsTrash className="text-[25px] text-white opacity-50" />
           </button>
         </div>
@@ -70,17 +73,19 @@ const BossTable = () => {
   ));
 
   return (
-    <SearchTable
-      isLoading={isLoading}
-      rows={rows}
-      theads={theads}
-      tableTitle="Boss Table"
-      setPage={setPage}
-      value={value}
-      setValue={setValue}
-      total={total}
-      totalPages={totalPage}
-    />
+    <>
+      <SearchTable
+        isLoading={isLoading}
+        rows={rows}
+        theads={theads}
+        tableTitle="Boss Table"
+        setPage={setPage}
+        value={value}
+        setValue={setValue}
+        total={total}
+        totalPages={totalPage}
+      />
+    </>
   );
 };
 

@@ -21,6 +21,7 @@ export interface SideBarTabData {
 }
 
 export interface AddBusinessTypeFormValues {
+  id?: string;
   english?: string;
   myanmar?: string;
 }
@@ -52,7 +53,7 @@ export interface UseTableReturnProps {
 
 export interface MutationQueryProps {
   url: string;
-  body: object;
+  body: any;
   method: string;
 }
 
@@ -61,4 +62,26 @@ export interface GetPasswordType {
   id?: string;
 }
 
-export interface ModalFormValues extends GetPasswordType {}
+export interface AdminUpdateType {
+  id?: string;
+  adminKey?: string;
+  name?: string;
+  email?: string;
+  password?: string;
+}
+
+export interface ModalFormValues
+  extends GetPasswordType,
+    AddBusinessTypeFormValues,
+    AdminUpdateType {}
+
+export interface GenerateCodeResponseType {
+  code: string;
+}
+
+export interface BaseApiResponseType extends GenerateCodeResponseType {
+  success: boolean;
+  message: string;
+  data: object;
+  error: FetchBaseQueryError | SerializedError;
+}

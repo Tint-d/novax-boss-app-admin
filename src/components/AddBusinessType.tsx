@@ -14,7 +14,7 @@ const AddBusinessType = () => {
     },
   });
 
-  const { mutate: addBusinessType } = useMutation();
+  const { mutate: addBusinessType, isLoading } = useMutation(form);
 
   const onCreateBusinessType = (values: AddBusinessTypeFormValues) => {
     addBusinessType({
@@ -43,7 +43,7 @@ const AddBusinessType = () => {
             placeholder="text type"
             value="myanmar"
           />
-          <SaveButton type="submit" />
+          <SaveButton type="submit" isLoading={isLoading} />
         </div>
       </form>
     </FormCard>

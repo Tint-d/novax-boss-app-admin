@@ -1,21 +1,30 @@
 /* eslint-disable react-refresh/only-export-components */
 import toast from "react-hot-toast";
 import { usePostDataMutation } from "../redux/api/adminApi";
-import { MutationQueryProps } from "../typings/type";
+import { FormValues, MutationQueryProps } from "../typings/type";
+import { UseFormReturnType } from "@mantine/form";
 
-export default () => {
+export default (
+  form: UseFormReturnType<FormValues> | null = null,
+  reset: boolean = true
+) => {
   const [mutate, { data, isLoading }] = usePostDataMutation();
 
   const onMutate = async (params: MutationQueryProps) => {
-    const { error } = await mutate(params);
+    const { error, data: responseData } = (await mutate(params)) as any;
 
-    if (data?.success) {
-      toast.success(data?.message);
+    console.log(error);
+
+    if (responseData?.success) {
+      toast.success(responseData?.message);
+      if (reset && form) form.reset();
     } else if (error) {
       toast.error(error?.data?.message);
+    } else if (!responseData?.success) {
+      toast.error(responseData.message);
     }
 
-    console.log(data, error, isLoading);
+    return responseData;
   };
 
   const onDeleteHandler = async (url: string) => {

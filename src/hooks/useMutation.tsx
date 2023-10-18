@@ -18,5 +18,14 @@ export default () => {
     console.log(data, error, isLoading);
   };
 
-  return { mutate: onMutate, isLoading, data };
+  const onDeleteHandler = async (url: string) => {
+    // console.log(id);
+    const data = await onMutate({
+      url: url,
+      body: {},
+      method: "DELETE",
+    });
+    console.log(data);
+  };
+  return { mutate: onMutate, onDeleteHandler, isLoading, data };
 };

@@ -12,7 +12,7 @@ interface PropsType {
 }
 
 const DeleteAdmin = ({ opened, close, form }: PropsType) => {
-  const useDelete = useTableDelete();
+  const { useDelete, isLoading } = useTableDelete();
 
   const onSubmitHandler = async (values: AdminUpdateType) => {
     useDelete(
@@ -36,7 +36,7 @@ const DeleteAdmin = ({ opened, close, form }: PropsType) => {
         value="adminKey"
       />
 
-      <SaveButton type="submit" name="Delete" isLoading={false} />
+      <SaveButton type="submit" name="Delete" isLoading={isLoading} />
     </ModalBox>
   );
 };

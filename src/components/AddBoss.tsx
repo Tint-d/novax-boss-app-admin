@@ -15,6 +15,13 @@ const AddBoss = () => {
       number: "",
       code: "",
     },
+    validate: {
+      name: (value) =>
+        value && value?.length > 4 ? null : "Name must have at least 4 letters",
+      number: (value) =>
+        value && value.length > 4 ? null : "Name must have at least 4 letters",
+      code: (value) => (!value ? "Code is required" : null),
+    },
   });
 
   const { mutate: generateCode, isLoading: generateCodeLoading } = useMutation(

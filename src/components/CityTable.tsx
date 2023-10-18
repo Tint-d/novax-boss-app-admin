@@ -18,7 +18,7 @@ const CityTable = () => {
     english: "",
     myanmar: "",
   });
-  const { setPage, value, setValue, data, total, totalPage, isLoading } =
+  const { setPage, value, setValue, data, total, totalPage, isLoading, page } =
     useTable("admin/cities/list", "cities");
   const useDelete = useTableDelete();
 

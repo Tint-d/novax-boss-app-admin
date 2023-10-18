@@ -15,7 +15,7 @@ const LoginUserTable = ({ tableTitle, type }: PropsType) => {
   const { page, setPage, value, setValue, data, total, totalPage, isLoading } =
     useTable(`admin/user/list/${type}`, "users");
 
-  const useDelete = useTableDelete();
+  const { useDelete } = useTableDelete();
 
   const theads = ["No", "Name", "Email", "Action"];
 

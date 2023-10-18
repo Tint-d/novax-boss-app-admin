@@ -8,25 +8,28 @@ import SearchTable from "./SearchTable";
 
 import useTable from "../hooks/useTable";
 import useMutation from "../hooks/useMutation";
+import useTableEdit from "../hooks/useTableEdit";
+import EditCity from "./EditCity";
+import useTableDelete from "../hooks/useTableDelete";
 
 const CityTable = () => {
-  // const [page, setPage] = useState<number>(1);
-  // const [value, setValue] = useState<string>("");
-  // console.log(page);
-  // console.log(value);
+  const { form, open, close, opened } = useTableEdit({
+    id: "",
+    english: "",
+    myanmar: "",
+  });
   const { setPage, value, setValue, data, total, totalPage, isLoading } =
     useTable("admin/cities/list", "cities");
+  const useDelete = useTableDelete();
 
-    const { mutate: deleteBoss } = useMutation();
-
-  const onDeleteHandler = async (id: number) => {
-    console.log(id);
-    const data = await deleteBoss({
-      url: `admin/boss-address/delete/${id}`,
-      body: {},
-      method: "DELETE",
+  const onEditHandler = (element: any) => {
+    form.setValues({
+      id: element.id,
+      english: element.city_name,
+      myanmar: element.city_mm_name,
     });
-    console.log(data);
+
+    open();
   };
 
   const theads = ["No", "English Name", "Myanmar Name", "Action"];
@@ -50,11 +53,17 @@ const CityTable = () => {
             <AiOutlineEye className="text-[25px] text-white opacity-50" />
           </button>
 
-          <button className="w-10 h-10 rounded-xl bg-warining flex justify-center items-center">
+          <button
+            onClick={() => onEditHandler(element)}
+            className="w-10 h-10 rounded-xl bg-warining flex justify-center items-center"
+          >
             <FiEdit className="text-[25px] text-hightlightColor" />
           </button>
 
-          <button onClick={()=>onDeleteHandler(element.id)} className="w-10 h-10 rounded-xl bg-red-800 flex justify-center items-center">
+          <button
+            onClick={() => useDelete(`admin/cities/delete/${element.id}`)}
+            className="w-10 h-10 rounded-xl bg-red-800 flex justify-center items-center"
+          >
             <BsTrash className="text-[25px] text-white opacity-50" />
           </button>
         </div>
@@ -63,17 +72,21 @@ const CityTable = () => {
   ));
 
   return (
-    <SearchTable
-      isLoading={isLoading}
-      rows={rows}
-      theads={theads}
-      tableTitle={"Citites"}
-      setPage={setPage}
-      value={value}
-      setValue={setValue}
-      total={total}
-      totalPages={totalPage}
-    />
+    <>
+      <SearchTable
+        isLoading={isLoading}
+        rows={rows}
+        theads={theads}
+        tableTitle={"Citites"}
+        setPage={setPage}
+        value={value}
+        setValue={setValue}
+        total={total}
+        totalPages={totalPage}
+      />
+
+      <EditCity form={form} close={close} opened={opened} />
+    </>
   );
 };
 

@@ -6,10 +6,29 @@ import { BsTrash } from "react-icons/bs";
 import SearchTable from "./SearchTable";
 
 import useTable from "../hooks/useTable";
+import EditBusinessType from "./EditBusinessType";
+import useTableEdit from "../hooks/useTableEdit";
+import useTableDelete from "../hooks/useTableDelete";
 
 const BusinessTypeTable = () => {
+  const { form, opened, open, close } = useTableEdit({
+    id: "",
+    english: "",
+    myanmar: "",
+  });
+  const useDelete = useTableDelete();
   const { setPage, value, setValue, data, total, totalPage, isLoading } =
     useTable("admin/address-category/list", "categories");
+
+  const onEditHandler = (element: any) => {
+    form.setValues({
+      id: element.id,
+      english: element.category_name,
+      myanmar: element.category_mm_name,
+    });
+
+    open();
+  };
 
   const theads = ["No", "English Type", "Myanmar Type", "Action"];
   const rows = data.map((element: any, index: number) => (
@@ -32,11 +51,19 @@ const BusinessTypeTable = () => {
             <AiOutlineEye className="text-[25px] text-white opacity-50" />
           </button>
 
-          <button className="w-10 h-10 rounded-xl bg-warining flex justify-center items-center">
+          <button
+            onClick={() => onEditHandler(element)}
+            className="w-10 h-10 rounded-xl bg-warining flex justify-center items-center"
+          >
             <FiEdit className="text-[25px] text-hightlightColor" />
           </button>
 
-          <button className="w-10 h-10 rounded-xl bg-red-800 flex justify-center items-center">
+          <button
+            onClick={() =>
+              useDelete(`admin/address-category/delete/${element?.id}`)
+            }
+            className="w-10 h-10 rounded-xl bg-red-800 flex justify-center items-center"
+          >
             <BsTrash className="text-[25px] text-white opacity-50" />
           </button>
         </div>
@@ -45,17 +72,20 @@ const BusinessTypeTable = () => {
   ));
 
   return (
-    <SearchTable
-      isLoading={isLoading}
-      rows={rows}
-      theads={theads}
-      tableTitle={"Business Type"}
-      setPage={setPage}
-      value={value}
-      setValue={setValue}
-      total={total}
-      totalPages={totalPage}
-    />
+    <>
+      <SearchTable
+        isLoading={isLoading}
+        rows={rows}
+        theads={theads}
+        tableTitle={"Business Type"}
+        setPage={setPage}
+        value={value}
+        setValue={setValue}
+        total={total}
+        totalPages={totalPage}
+      />
+      <EditBusinessType opened={opened} close={close} form={form} />
+    </>
   );
 };
 

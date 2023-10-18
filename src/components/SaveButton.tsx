@@ -10,7 +10,8 @@ const SaveButton = ({ type, name, isLoading }: PropsType) => {
   return (
     <button
       type={type ?? "button"}
-      className="w-[230px] h-[55px] text-white opacity-50 font-[400] bg-green-800 mx-auto rounded-[10px] text-[20px]"
+      className={`w-[230px] h-[55px] text-white opacity-50 font-[400]  mx-auto rounded-[10px] text-[20px]
+      ${name == "Delete" ? "bg-red-800" : "bg-green-800"}`}
     >
       {isLoading ? (
         <AiOutlineLoading3Quarters className="text-[24px] mx-auto animate-spin" />

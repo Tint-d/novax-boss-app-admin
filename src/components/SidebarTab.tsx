@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { SideBarTabData } from "../typings/type";
 import { useLocation, useNavigate } from "react-router-dom";
+
+import { SideBarTabData } from "../typings/type";
 
 type SidebarTabProps = {
   data: SideBarTabData;

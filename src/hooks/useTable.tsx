@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useDebouncedValue } from "@mantine/hooks";
 import { useEffect, useState } from "react";
+
 import { useGetDataQuery } from "../redux/api/adminApi";
 import { UseTableReturnProps } from "../typings/type";
 

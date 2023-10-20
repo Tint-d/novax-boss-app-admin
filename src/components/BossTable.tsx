@@ -1,13 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState, useEffect } from "react";
-import { AiOutlineEye } from "react-icons/ai";
 import { FiEdit } from "react-icons/fi";
 import { BsTrash } from "react-icons/bs";
 
 import SearchTable from "./SearchTable";
-import { useGetDataQuery } from "../redux/api/adminApi";
-import { useDebouncedValue } from "@mantine/hooks";
 import useTable from "../hooks/useTable";
 import useMutation from "../hooks/useMutation";
 
@@ -18,7 +14,6 @@ const BossTable = () => {
   const { mutate: deleteBoss } = useMutation();
 
   const onDeleteHandler = async (id: number) => {
-    // console.log(id);
     const data = await deleteBoss({
       url: `admin/boss-address/delete/${id}`,
       body: {},
@@ -53,10 +48,6 @@ const BossTable = () => {
       </td>
       <td>
         <div className="flex gap-5">
-          <button className="w-10 h-10 rounded-xl bg-green-800 flex justify-center items-center">
-            <AiOutlineEye className="text-[25px] text-white opacity-50" />
-          </button>
-
           <button className="w-10 h-10 rounded-xl bg-warining flex justify-center items-center">
             <FiEdit className="text-[25px] text-hightlightColor" />
           </button>

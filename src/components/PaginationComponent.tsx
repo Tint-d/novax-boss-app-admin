@@ -19,7 +19,7 @@ const PaginationComponent = ({ setPage, totalPages }: PropsType) => {
       }}
       classNames={{
         control:
-          "rounded-full border-transparent text-textColor bg-rowColor text-[20px] w-10 h-10",
+          "rounded-full border-transparent text-textColor bg-rowColor text-[20px] min-w-12 min-h-12 p-2",
         dots: "text-white",
       }}
       styles={{

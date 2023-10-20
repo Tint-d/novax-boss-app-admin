@@ -3,7 +3,7 @@ import Swal, { SweetAlertResult } from "sweetalert2";
 import useMutation from "./useMutation";
 
 export default () => {
-  const { mutate,isLoading } = useMutation();
+  const { mutate, isLoading } = useMutation();
 
   const onDeleteHandler = (
     url: string,
@@ -22,7 +22,7 @@ export default () => {
       confirmButtonText: "Yes, delete it!",
     }).then(async (result: SweetAlertResult) => {
       if (result.isConfirmed) {
-        const response = await mutate({
+        await mutate({
           url,
           body: body ?? {},
           method: method,
@@ -31,5 +31,5 @@ export default () => {
     });
   };
 
-  return {useDelete: onDeleteHandler,isLoading: isLoading};
+  return { useDelete: onDeleteHandler, isLoading: isLoading };
 };

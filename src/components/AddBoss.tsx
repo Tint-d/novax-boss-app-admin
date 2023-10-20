@@ -4,9 +4,9 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 import FormCard from "./FormCard";
 import TextInputComponent from "./TextInputComponent";
-import { AddBossFormValues } from "../typings/type";
 import SaveButton from "./SaveButton";
 import useMutation from "../hooks/useMutation";
+import { AddBossFormValues } from "../typings/type";
 
 const AddBoss = () => {
   const form = useForm<AddBossFormValues>({

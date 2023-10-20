@@ -1,10 +1,8 @@
 import { Table, TextInput } from "@mantine/core";
-// import { Link } from "react-router-dom";
-// import "./searchtable.css";
+
 import PaginationComponent from "./PaginationComponent";
-import dataNotFound from "../assets/dataNotFound.json";
-import loading from "../assets/loading.json";
-import Lottie from "lottie-react";
+import TableRowsContainer from "./TableRowsContainer";
+
 interface PropsType {
   isLoading: boolean;
   rows: JSX.Element[];
@@ -54,33 +52,11 @@ const SearchTable = ({
             </tr>
           </thead>
           <tbody>
-            {isLoading ? (
-              <tr>
-                <td colSpan={theads.length}>
-                  <div className="w-full flex justify-center items-center ">
-                    <Lottie
-                      animationData={loading}
-                      loop={true}
-                      className="h-[300px]"
-                    />
-                  </div>
-                </td>
-              </tr>
-            ) : rows.length > 0 ? (
-              rows
-            ) : (
-              <tr>
-                <td colSpan={theads.length}>
-                  <div className="w-full flex justify-center items-center ">
-                    <Lottie
-                      animationData={dataNotFound}
-                      loop={true}
-                      className="h-[300px]"
-                    />
-                  </div>
-                </td>
-              </tr>
-            )}
+            <TableRowsContainer
+              rows={rows}
+              theads={theads}
+              isLoading={isLoading}
+            />
           </tbody>
         </Table>
 

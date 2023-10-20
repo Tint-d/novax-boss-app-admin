@@ -1,25 +1,22 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from "react";
 
 import DailyTable from "./DailyTable";
 import { IoPersonCircleOutline } from "react-icons/io5";
 import useTable from "../hooks/useTable";
 
 const DailyNewUserTable = () => {
-  // const elements = [
-  //   { id: "#1", name: "Ei Thwe" },
-  //   { id: "#2", name: "Ei Thwe" },
-  // ];
   const theads = ["No", "Name"];
 
-  const { page,setPage,total,totalPage, data } = useTable(
+  const { page, setPage, total, totalPage, data, isLoading } = useTable(
     "admin/stats/recent-registered-users",
     "users"
   );
   const rows = data.map((element: any, index: number) => (
     <tr
       key={element.id}
-      className={`${index % 2 === 1 ? "bg-hightlightColor" : "bg-rowColor"}`}
+      className={`${
+        index % 2 === 1 ? "bg-hightlightColor" : "bg-rowColor"
+      } h-14`}
     >
       <td className="text-[20px] font-[400] px-[20px]">
         <p className="text-textColor text-[20px]">
@@ -36,8 +33,9 @@ const DailyNewUserTable = () => {
     </tr>
   ));
   return (
-    <div className="w-[45%] overflow-x-scroll">
-       <DailyTable
+    <div className="w-[45%] ">
+      <DailyTable
+        isLoading={isLoading}
         rows={rows}
         theads={theads}
         tableTitle={"Recent new User"}

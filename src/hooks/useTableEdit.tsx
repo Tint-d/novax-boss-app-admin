@@ -1,6 +1,7 @@
 import { useDisclosure } from "@mantine/hooks";
-import { AddBusinessTypeFormValues, ModalFormValues } from "../typings/type";
 import { useForm } from "@mantine/form";
+
+import { ModalFormValues } from "../typings/type";
 
 export default (initialValues: ModalFormValues) => {
   const [opened, { open, close }] = useDisclosure(false);

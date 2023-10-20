@@ -1,7 +1,9 @@
 import { Table } from "@mantine/core";
 import { Link } from "react-router-dom";
+
 import PaginationComponent from "./PaginationComponent";
-// import "./dailyTable.css";
+import TableRowsContainer from "./TableRowsContainer";
+
 interface PropsType {
   rows: JSX.Element[];
   theads: string[];
@@ -11,7 +13,9 @@ interface PropsType {
   total: number;
   totalPages: number;
   setPage: React.Dispatch<React.SetStateAction<number>>;
+  isLoading: boolean;
 }
+
 const DailyTable = ({
   rows,
   theads,
@@ -21,6 +25,7 @@ const DailyTable = ({
   total,
   setPage,
   totalPages,
+  isLoading,
 }: PropsType) => {
   return (
     <div className="bg-tableBgColor rounded-[20px] w-full  p-[15px]">
@@ -44,7 +49,13 @@ const DailyTable = ({
               ))}
             </tr>
           </thead>
-          <tbody>{rows}</tbody>
+          <tbody>
+            <TableRowsContainer
+              rows={rows}
+              theads={theads}
+              isLoading={isLoading}
+            />
+          </tbody>
         </Table>
         <div className="w-full overflow-x-auto flex justify-between items-center my-5 gap-10">
           <p className="text-textColor text-[20px] whitespace-nowrap">

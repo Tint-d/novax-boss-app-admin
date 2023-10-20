@@ -1,16 +1,13 @@
 import { Modal } from "@mantine/core";
-// import { useDisclosure } from "@mantine/hooks";
 
 interface PropsType {
   opened: boolean;
   close: () => void;
-  //   selectedItem: object;
   title: string;
   children: React.ReactNode;
 }
 
 const ViewModal = ({ opened, close, title, children }: PropsType) => {
-  //   console.log(selectedItem);
   return (
     <Modal
       title={title}
@@ -23,7 +20,6 @@ const ViewModal = ({ opened, close, title, children }: PropsType) => {
         header: {
           background: "#171717",
           padding: "20px",
-        
         },
         body: {
           color: "#676767",

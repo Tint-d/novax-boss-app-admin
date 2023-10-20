@@ -1,8 +1,9 @@
 /* eslint-disable react-refresh/only-export-components */
 import toast from "react-hot-toast";
+import { UseFormReturnType } from "@mantine/form";
+
 import { usePostDataMutation } from "../redux/api/adminApi";
 import { FormValues, MutationQueryProps } from "../typings/type";
-import { UseFormReturnType } from "@mantine/form";
 
 export default (
   form: UseFormReturnType<FormValues> | null = null,
@@ -26,7 +27,6 @@ export default (
   };
 
   const onDeleteHandler = async (url: string) => {
-    // console.log(id);
     const data = await onMutate({
       url: url,
       body: {},

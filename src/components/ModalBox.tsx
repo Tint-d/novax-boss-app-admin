@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import React from "react";
 import { Modal } from "@mantine/core";
 import { UseFormReturnType } from "@mantine/form";
-import React from "react";
+
 import { ModalFormValues } from "../typings/type";
 
 interface PropsType {
@@ -35,6 +36,9 @@ const ModalBox = ({
         close: {
           color: "white",
           background: "transparent",
+          "&:hover": {
+            background: "transparent",
+          },
         },
       }}
     >

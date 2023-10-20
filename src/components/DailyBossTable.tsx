@@ -1,18 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import useTable from "../hooks/useTable";
 import DailyTable from "./DailyTable";
-// import SearchTable from "./SearchTable";
-// import "./dailyTable.css";
 
 const DailyBossTable = () => {
-  // const elements = [
-  //   { id: "#1", name: "Ei Thwe", code: 2345 },
-  //   { id: "#2", name: "Ei Thwe", code: 2345 },
-  //   { id: "#3", name: "Ei Thwe", code: 2345 },
-  // ];
   const theads = ["No", "Name", "Boss Number"];
 
-  const { page, setPage, data, total, totalPage } = useTable(
+  const { page, setPage, data, total, totalPage, isLoading } = useTable(
     "admin/stats/recent-registered-boss-address",
     "bossAddress"
   );
@@ -51,6 +44,7 @@ const DailyBossTable = () => {
         totalPages={totalPage}
       /> */}
       <DailyTable
+        isLoading={isLoading}
         rows={rows}
         theads={theads}
         tableTitle={"Recent new Boss"}

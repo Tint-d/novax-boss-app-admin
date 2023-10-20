@@ -1,10 +1,10 @@
 import { useForm } from "@mantine/form";
 
 import FormCard from "./FormCard";
-import { AddBusinessTypeFormValues } from "../typings/type";
 import TextInputComponent from "./TextInputComponent";
 import SaveButton from "./SaveButton";
 import useMutation from "../hooks/useMutation";
+import { AddBusinessTypeFormValues } from "../typings/type";
 
 const AddCity = () => {
   const form = useForm<AddBusinessTypeFormValues>({

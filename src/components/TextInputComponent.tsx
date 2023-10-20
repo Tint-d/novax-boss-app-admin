@@ -1,8 +1,8 @@
 import { TextInput } from "@mantine/core";
-
 import { UseFormReturnType } from "@mantine/form";
-import { FormValues } from "../typings/type";
 import { ReactNode } from "react";
+
+import { FormValues } from "../typings/type";
 
 interface PropsType {
   label: string;

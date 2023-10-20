@@ -46,8 +46,10 @@ const DailyTable = ({
           </thead>
           <tbody>{rows}</tbody>
         </Table>
-        <div className="w-full flex justify-between items-center my-5">
-          <p className="text-textColor text-[20px]">Total: {total}</p>
+        <div className="w-full overflow-x-auto flex justify-between items-center my-5 gap-10">
+          <p className="text-textColor text-[20px] whitespace-nowrap">
+            Total: {total}
+          </p>
           <PaginationComponent setPage={setPage} totalPages={totalPages} />
         </div>
       </div>

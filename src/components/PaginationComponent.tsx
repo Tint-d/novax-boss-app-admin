@@ -31,7 +31,7 @@ const PaginationComponent = ({ setPage, totalPages }: PropsType) => {
         },
       }}
     >
-      <Group spacing={7} position="center">
+      <Group spacing={7} position="center" noWrap>
         <Pagination.Previous
           icon={MdKeyboardDoubleArrowLeft}
           className="border !border-warining text-warining"

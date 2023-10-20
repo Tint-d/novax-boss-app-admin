@@ -30,13 +30,8 @@ export interface AddAdminFormValues {
   name?: string;
   email?: string;
   password?: string;
+  adminKey?: string;
 }
-
-export interface FormValues
-  extends AddBossFormValues,
-    AddBusinessTypeFormValues,
-    AddAdminFormValues,
-    GetPasswordType {}
 
 export interface UseTableReturnProps {
   page: number;
@@ -70,11 +65,6 @@ export interface AdminUpdateType {
   password?: string;
 }
 
-export interface ModalFormValues
-  extends GetPasswordType,
-    AddBusinessTypeFormValues,
-    AdminUpdateType {}
-
 export interface GenerateCodeResponseType {
   code: string;
 }
@@ -84,4 +74,51 @@ export interface BaseApiResponseType extends GenerateCodeResponseType {
   message: string;
   data: object;
   error: FetchBaseQueryError | SerializedError;
+}
+
+export interface GetAdminKeyType {
+  adminKey?: string;
+}
+
+export interface EditBusinessType {
+  category_name?: string;
+  category_mm_name?: string;
+}
+
+export interface EditCityType {
+  city_name?: string;
+  city_mm_name?: string;
+}
+
+export interface EditAdminType {
+  adminKey?: string;
+  name?: string;
+  email?: string;
+  password?: string;
+}
+
+export interface ActionEditType
+  extends EditBusinessType,
+    EditCityType,
+    EditAdminType {}
+
+export interface ModalFormValues
+  extends GetPasswordType,
+    AddBusinessTypeFormValues,
+    AdminUpdateType,
+    GetAdminKeyType,
+    ActionEditType {}
+
+export interface FormValues
+  extends AddBossFormValues,
+    AddBusinessTypeFormValues,
+    AddAdminFormValues,
+    GetPasswordType,
+    ActionEditType {}
+
+export interface AdminInfoType {
+  id: string;
+  name: string;
+  email: string;
+  password: string;
 }

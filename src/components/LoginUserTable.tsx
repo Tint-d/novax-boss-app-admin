@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { AiOutlineEye } from "react-icons/ai";
-import { BsTrash } from "react-icons/bs";
 
 import SearchTable from "./SearchTable";
 import useTable from "../hooks/useTable";
-import useTableDelete from "../hooks/useTableDelete";
+import ActionDelete from "./ActionDelete";
 
 interface PropsType {
   tableTitle: string;
@@ -14,8 +13,6 @@ interface PropsType {
 const LoginUserTable = ({ tableTitle, type }: PropsType) => {
   const { page, setPage, value, setValue, data, total, totalPage, isLoading } =
     useTable(`admin/user/list/${type}`, "users");
-
-  const { useDelete } = useTableDelete();
 
   const theads = ["No", "Name", "Email", "Action"];
 
@@ -44,12 +41,7 @@ const LoginUserTable = ({ tableTitle, type }: PropsType) => {
             <AiOutlineEye className="text-[25px] text-white opacity-50" />
           </button>
 
-          <button
-            onClick={() => useDelete(`/admin/users/delete/${element.id}`)}
-            className="w-10 h-10 rounded-xl bg-red-800 flex justify-center items-center"
-          >
-            <BsTrash className="text-[25px] text-white opacity-50" />
-          </button>
+          <ActionDelete url={`/admin/users/delete/${element.id}`} />
         </div>
       </td>
     </tr>

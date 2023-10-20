@@ -1,5 +1,5 @@
 import { useDisclosure } from "@mantine/hooks";
-import { AddBusinessTypeFormValues, ModalFormValues } from "../typings/type";
+import { ModalFormValues } from "../typings/type";
 import { useForm } from "@mantine/form";
 
 export default (initialValues: ModalFormValues) => {

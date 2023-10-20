@@ -35,6 +35,9 @@ const ModalBox = ({
         close: {
           color: "white",
           background: "transparent",
+          "&:hover": {
+            background: "transparent",
+          },
         },
       }}
     >

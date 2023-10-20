@@ -26,7 +26,6 @@ export default (
   };
 
   const onDeleteHandler = async (url: string) => {
-    // console.log(id);
     const data = await onMutate({
       url: url,
       body: {},

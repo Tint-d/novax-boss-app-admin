@@ -1,34 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { AiOutlineEye } from "react-icons/ai";
-import { FiEdit } from "react-icons/fi";
-import { BsTrash } from "react-icons/bs";
-
-import SearchTable from "./SearchTable";
 
 import useTable from "../hooks/useTable";
-import EditBusinessType from "./EditBusinessType";
-import useTableEdit from "../hooks/useTableEdit";
-import useTableDelete from "../hooks/useTableDelete";
+import SearchTable from "./SearchTable";
+import ActionDelete from "./ActionDelete";
+import ActionEdit from "./ActionEdit";
 
 const BusinessTypeTable = () => {
-  const { form, opened, open, close } = useTableEdit({
-    id: "",
-    english: "",
-    myanmar: "",
-  });
-  const { useDelete } = useTableDelete();
   const { setPage, value, setValue, data, total, totalPage, isLoading } =
     useTable("admin/address-category/list", "categories");
-
-  const onEditHandler = (element: any) => {
-    form.setValues({
-      id: element.id,
-      english: element.category_name,
-      myanmar: element.category_mm_name,
-    });
-
-    open();
-  };
 
   const theads = ["No", "English Type", "Myanmar Type", "Action"];
   const rows = data.map((element: any, index: number) => (
@@ -51,41 +31,32 @@ const BusinessTypeTable = () => {
             <AiOutlineEye className="text-[25px] text-white opacity-50" />
           </button>
 
-          <button
-            onClick={() => onEditHandler(element)}
-            className="w-10 h-10 rounded-xl bg-warining flex justify-center items-center"
-          >
-            <FiEdit className="text-[25px] text-hightlightColor" />
-          </button>
+          <ActionEdit
+            initialValues={{
+              category_name: element.category_name,
+              category_mm_name: element.category_mm_name,
+            }}
+            url={`admin/address-category/update/${element.id}`}
+          />
 
-          <button
-            onClick={() =>
-              useDelete(`admin/address-category/delete/${element?.id}`)
-            }
-            className="w-10 h-10 rounded-xl bg-red-800 flex justify-center items-center"
-          >
-            <BsTrash className="text-[25px] text-white opacity-50" />
-          </button>
+          <ActionDelete url={`admin/address-category/delete/${element?.id}`} />
         </div>
       </td>
     </tr>
   ));
 
   return (
-    <>
-      <SearchTable
-        isLoading={isLoading}
-        rows={rows}
-        theads={theads}
-        tableTitle={"Business Type"}
-        setPage={setPage}
-        value={value}
-        setValue={setValue}
-        total={total}
-        totalPages={totalPage}
-      />
-      <EditBusinessType opened={opened} close={close} form={form} />
-    </>
+    <SearchTable
+      isLoading={isLoading}
+      rows={rows}
+      theads={theads}
+      tableTitle={"Business Type"}
+      setPage={setPage}
+      value={value}
+      setValue={setValue}
+      total={total}
+      totalPages={totalPage}
+    />
   );
 };
 

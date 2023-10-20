@@ -1,35 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { AiOutlineEye } from "react-icons/ai";
-import { FiEdit } from "react-icons/fi";
-import { BsTrash } from "react-icons/bs";
-
-import SearchTable from "./SearchTable";
 
 import useTable from "../hooks/useTable";
-import useTableEdit from "../hooks/useTableEdit";
-import EditCity from "./EditCity";
-import useTableDelete from "../hooks/useTableDelete";
+import SearchTable from "./SearchTable";
+import ActionDelete from "./ActionDelete";
+import ActionEdit from "./ActionEdit";
 
 const CityTable = () => {
-  const { form, open, close, opened } = useTableEdit({
-    id: "",
-    english: "",
-    myanmar: "",
-  });
   const { setPage, value, setValue, data, total, totalPage, isLoading } =
     useTable("admin/cities/list", "cities");
-  const { useDelete } = useTableDelete();
-
-  const onEditHandler = (element: any) => {
-    form.setValues({
-      id: element.id,
-      english: element.city_name,
-      myanmar: element.city_mm_name,
-    });
-
-    open();
-  };
 
   const theads = ["No", "English Name", "Myanmar Name", "Action"];
   const rows = data.map((element: any, index: number) => (
@@ -52,40 +32,32 @@ const CityTable = () => {
             <AiOutlineEye className="text-[25px] text-white opacity-50" />
           </button>
 
-          <button
-            onClick={() => onEditHandler(element)}
-            className="w-10 h-10 rounded-xl bg-warining flex justify-center items-center"
-          >
-            <FiEdit className="text-[25px] text-hightlightColor" />
-          </button>
+          <ActionEdit
+            initialValues={{
+              city_name: element.city_name,
+              city_mm_name: element.city_mm_name,
+            }}
+            url={`admin/cities/update/${element.id}`}
+          />
 
-          <button
-            onClick={() => useDelete(`admin/cities/delete/${element.id}`)}
-            className="w-10 h-10 rounded-xl bg-red-800 flex justify-center items-center"
-          >
-            <BsTrash className="text-[25px] text-white opacity-50" />
-          </button>
+          <ActionDelete url={`admin/cities/delete/${element.id}`} />
         </div>
       </td>
     </tr>
   ));
 
   return (
-    <>
-      <SearchTable
-        isLoading={isLoading}
-        rows={rows}
-        theads={theads}
-        tableTitle={"Citites"}
-        setPage={setPage}
-        value={value}
-        setValue={setValue}
-        total={total}
-        totalPages={totalPage}
-      />
-
-      <EditCity form={form} close={close} opened={opened} />
-    </>
+    <SearchTable
+      isLoading={isLoading}
+      rows={rows}
+      theads={theads}
+      tableTitle={"Citites"}
+      setPage={setPage}
+      value={value}
+      setValue={setValue}
+      total={total}
+      totalPages={totalPage}
+    />
   );
 };
 

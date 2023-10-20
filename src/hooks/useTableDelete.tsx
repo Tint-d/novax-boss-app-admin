@@ -3,7 +3,7 @@ import Swal, { SweetAlertResult } from "sweetalert2";
 import useMutation from "./useMutation";
 
 export default () => {
-  const { mutate } = useMutation();
+  const { mutate,isLoading } = useMutation();
 
   const onDeleteHandler = (
     url: string,
@@ -27,11 +27,9 @@ export default () => {
           body: body ?? {},
           method: method,
         });
-
-        console.log(response);
       }
     });
   };
 
-  return onDeleteHandler;
+  return {useDelete: onDeleteHandler,isLoading: isLoading};
 };

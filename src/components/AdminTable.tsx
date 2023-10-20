@@ -41,6 +41,10 @@ const AdminTable = () => {
       adminKey: "",
       id: "",
     },
+    validate: {
+      adminKey: (value) =>
+        value && value.length > 4 ? null : "Admin key is required!",
+    },
   });
   const form = useForm<GetPasswordType>({
     initialValues: {
@@ -120,16 +124,22 @@ const AdminTable = () => {
       </td>
       <td className="text-white text-[18px] font-[400] px-[20px] w-[320px]">
         <div className="flex gap-3 items-center">
-          {element.password ? element.password : "••••••••"}
-          <button
-            onClick={() => {
-              form.setFieldValue("id", element.id);
-              open();
-            }}
-            className=" flex justify-center items-center text-white opacity-50 hover:text-success active:text-opacity-80"
-          >
-            <AiOutlineEye className="text-[20px] " />
-          </button>
+          {element.password ? (
+            element.password
+          ) : (
+            <>
+              ••••••••
+              <button
+                onClick={() => {
+                  form.setFieldValue("id", element.id);
+                  open();
+                }}
+                className=" flex justify-center items-center text-white opacity-50 hover:text-success active:text-opacity-80"
+              >
+                <AiOutlineEye className="text-[20px] " />
+              </button>
+            </>
+          )}
         </div>
       </td>
       <td>

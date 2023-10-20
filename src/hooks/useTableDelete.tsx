@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import Swal, { SweetAlertResult } from "sweetalert2";
 import useMutation from "./useMutation";
 
@@ -11,11 +12,13 @@ export default () => {
   ) => {
     Swal.fire({
       title: "Are you sure?",
+      background:"#212121",
       text: "You won't be able to revert this!",
       icon: "warning",
+      iconColor:"#DCA715",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
+      confirmButtonColor: "#166534",
+      cancelButtonColor: "#991B1B",
       confirmButtonText: "Yes, delete it!",
     }).then(async (result: SweetAlertResult) => {
       if (result.isConfirmed) {

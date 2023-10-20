@@ -1,9 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { UseFormReturnType } from "@mantine/form";
-import {
-  AddBusinessTypeFormValues,
-  AdminUpdateType,
-  ModalFormValues,
-} from "../typings/type";
+import { AdminUpdateType, ModalFormValues } from "../typings/type";
 import ModalBox from "./ModalBox";
 import TextInputComponent from "./TextInputComponent";
 import SaveButton from "./SaveButton";

@@ -7,7 +7,7 @@ import { BsTrash } from "react-icons/bs";
 import SearchTable from "./SearchTable";
 
 import useTable from "../hooks/useTable";
-import useMutation from "../hooks/useMutation";
+// import useMutation from "../hooks/useMutation";
 import useTableEdit from "../hooks/useTableEdit";
 import EditCity from "./EditCity";
 import useTableDelete from "../hooks/useTableDelete";
@@ -18,11 +18,11 @@ const CityTable = () => {
     english: "",
     myanmar: "",
   });
-  const { setPage, value, setValue, data, total, totalPage, isLoading } =
+  const { setPage,page, value, setValue, data, total, totalPage, isLoading } =
     useTable("admin/cities/list", "cities");
-  const useDelete = useTableDelete();
+  const onDeleteHandler = useTableDelete();
 
-  const { onDeleteHandler } = useMutation();
+  // const { onDeleteHandler } = useMutation();
 
   // const onDeleteHandler = async (id: number) => {
   //   console.log(id);

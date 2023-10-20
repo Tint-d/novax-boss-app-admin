@@ -21,3 +21,15 @@ th {
   color: #484848;
   font-size: 20px;
 }
+.mantine-Modal-close:hover {
+  background-color: #212121; /* Set your desired hover background color */
+}
+
+.truncate-text {
+  max-width: 300px; /* Adjust the width as needed */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+

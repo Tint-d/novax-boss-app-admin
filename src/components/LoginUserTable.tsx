@@ -15,7 +15,7 @@ const LoginUserTable = ({ tableTitle, type }: PropsType) => {
   const { page, setPage, value, setValue, data, total, totalPage, isLoading } =
     useTable(`admin/user/list/${type}`, "users");
 
-  const useDelete = useTableDelete();
+  const onDeleteHandler = useTableDelete();
 
   const theads = ["No", "Name", "Email", "Action"];
 
@@ -45,7 +45,7 @@ const LoginUserTable = ({ tableTitle, type }: PropsType) => {
           </button>
 
           <button
-            onClick={() => useDelete(`/admin/users/delete/${element.id}`)}
+            onClick={() => onDeleteHandler(`/admin/users/delete/${element?.id}`)}
             className="w-10 h-10 rounded-xl bg-red-800 flex justify-center items-center"
           >
             <BsTrash className="text-[25px] text-white opacity-50" />

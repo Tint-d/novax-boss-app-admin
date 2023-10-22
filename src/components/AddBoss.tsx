@@ -94,7 +94,7 @@ const AddBoss = () => {
               </button>
             }
           />
-          <SaveButton type="submit" isLoading={submitLoading} />
+          <SaveButton type="submit" isLoading={submitLoading}/>
         </div>
       </form>
     </FormCard>

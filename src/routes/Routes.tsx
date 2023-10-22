@@ -7,6 +7,7 @@ import Dashboard from "../pages/Dashboard";
 import UserManagement from "../pages/UserManagement";
 import CategoryManagement from "../pages/CategoryManagement";
 import AdminManagement from "../pages/AdminManagement";
+import MessageManagement from "../pages/MessageManagement";
 const Register = lazy(() => import("../pages/Register"));
 const Login = lazy(() => import("../pages/Login"));
 
@@ -49,6 +50,14 @@ const Routes = () => {
       element: (
         <Suspense fallback={<Fallback />}>
           <AdminManagement />
+        </Suspense>
+      ),
+    },
+    {
+      path: paths.message,
+      element: (
+        <Suspense fallback={<Fallback />}>
+          <MessageManagement />
         </Suspense>
       ),
     },

@@ -40,7 +40,7 @@ const DailyNewUserTable = () => {
         theads={theads}
         tableTitle={"Recent new User"}
         btnName={"Review"}
-        route={""}
+        route={"/user"}
         total={total}
         totalPages={totalPage}
         setPage={setPage}

@@ -6,4 +6,5 @@ export const paths = {
   user: "/user",
   login: "/login",
   register: "/register",
+  message:"/message"
 };

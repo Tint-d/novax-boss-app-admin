@@ -29,6 +29,11 @@ export const SidebarTabs = [
     label: "Admin Management",
     link: "/admin",
   },
+  {
+    Icon: MdOutlineAdminPanelSettings,
+    label: "Message Management",
+    link: "/message",
+  },
 ];
 
 export const facebookLoginUserData = [

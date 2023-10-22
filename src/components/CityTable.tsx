@@ -46,7 +46,7 @@ const CityTable = () => {
       isLoading={isLoading}
       rows={rows}
       theads={theads}
-      tableTitle={"Citites"}
+      tableTitle={"Cities"}
       setPage={setPage}
       value={value}
       setValue={setValue}

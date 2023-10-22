@@ -32,24 +32,13 @@ const DailyBossTable = () => {
   ));
   return (
     <div className="w-[55%]">
-      {/* <SearchTable
-        isLoading={isLoading}
-        rows={rows}
-        theads={theads}
-        tableTitle={"Business Type"}
-        setPage={setPage}
-        value={value}
-        setValue={setValue}
-        total={total}
-        totalPages={totalPage}
-      /> */}
       <DailyTable
         isLoading={isLoading}
         rows={rows}
         theads={theads}
         tableTitle={"Recent new Boss"}
         btnName={"Review"}
-        route={""}
+        route={"/boss"}
         total={total}
         totalPages={totalPage}
         setPage={setPage}

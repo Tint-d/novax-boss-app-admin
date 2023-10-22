@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { AiOutlineEye } from "react-icons/ai";
 import { useDisclosure } from "@mantine/hooks";
 import { useForm } from "@mantine/form";

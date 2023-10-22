@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react-refresh/only-export-components */
 import toast from "react-hot-toast";
 import { UseFormReturnType } from "@mantine/form";

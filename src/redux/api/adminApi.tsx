@@ -1,11 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import config from "../../config/config";
-import {
-  BaseApiResponseType,
-  GenerateCodeResponseType,
-  MutationQueryProps,
-} from "../../typings/type";
+import { BaseApiResponseType, MutationQueryProps } from "../../typings/type";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: config.baseUrl, // Your API base URL

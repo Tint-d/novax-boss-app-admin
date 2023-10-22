@@ -9,7 +9,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="min-w-[329px] h-full overflow-y-auto">
+    <div className="min-w-[350px] h-full overflow-y-auto">
       <div className="w-full  flex flex-col px-5 py-10 gap-[20px] ">
         {SidebarTabs.map((data, index) => (
           <SidebarTab key={index} data={data} />

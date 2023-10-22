@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React from "react";
 import FormCard from "./FormCard";
 import { Textarea } from "@mantine/core";
 import SaveButton from "./SaveButton";
@@ -14,7 +13,8 @@ const AddMessage = () => {
     },
   });
 
-  const { mutate: postMessage, data, isLoading } = useMutation();
+  const { mutate: postMessage, isLoading } = useMutation(form);
+
   return (
     <FormCard title={"Add New Message"}>
       <form
@@ -34,7 +34,7 @@ const AddMessage = () => {
               minRows={9}
               classNames={{
                 input:
-                  " bg-hightlightColor border-none w-full px-5 text-textColor text-[20px]",
+                  " bg-hightlightColor border-none w-full px-5 text-textColor text-[20px] rounded-[10px]",
                 label: "text-[20px] font-[400] text-textColor mb-2",
               }}
               {...form.getInputProps("support_question")}
@@ -47,19 +47,16 @@ const AddMessage = () => {
               minRows={9}
               classNames={{
                 input:
-                  " bg-hightlightColor border-none w-full px-5 text-textColor text-[20px]",
+                  " bg-hightlightColor border-none w-full px-5 text-textColor text-[20px] rounded-[10px]",
                 label: "text-[20px] font-[400] text-textColor mb-2",
               }}
               {...form.getInputProps("support_answer")}
             />
           </div>
         </div>
-        <SaveButton
-          name="Save"
-          type="submit"
-          isLoading={isLoading}
-          justifyEnd="ml-auto"
-        />
+        <div className="flex justify-end">
+          <SaveButton name="Save" type="submit" isLoading={isLoading} />
+        </div>
       </form>
     </FormCard>
   );

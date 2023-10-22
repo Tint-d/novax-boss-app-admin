@@ -5,23 +5,12 @@ import { BsTrash } from "react-icons/bs";
 
 import SearchTable from "./SearchTable";
 import useTable from "../hooks/useTable";
-import useMutation from "../hooks/useMutation";
-import { AiOutlineEye } from "react-icons/ai";
+import ActionDelete from "./ActionDelete";
+import ActionEdit from "./ActionEdit";
 
 const MessageTable = () => {
   const { setPage, page, value, setValue, data, total, totalPage, isLoading } =
     useTable("admin/support-message/list", "supportMessages");
-
-  // const { mutate: deleteBoss } = useMutation();
-
-  // const onDeleteHandler = async (id: number) => {
-  //   const data = await deleteBoss({
-  //     url: `admin/boss-address/delete/${id}`,
-  //     body: {},
-  //     method: "DELETE",
-  //   });
-  //   console.log(data);
-  // };
 
   const theads = ["No", "Question", "Answer", "Action"];
 
@@ -44,19 +33,15 @@ const MessageTable = () => {
 
       <td>
         <div className="flex gap-5">
-          <button className="w-10 h-10 rounded-xl bg-green-800 flex justify-center items-center">
-            <AiOutlineEye className="text-[25px] text-white text-opacity-70" />
-          </button>
-          <button className="w-10 h-10 rounded-xl bg-warining flex justify-center items-center">
-            <FiEdit className="text-[25px] text-hightlightColor" />
-          </button>
+          <ActionEdit
+            initialValues={{
+              support_question: element.support_question,
+              support_answer: element.support_answer,
+            }}
+            url={`admin/support-message/update/${element.id}`}
+          />
 
-          <button
-            // onClick={() => onDeleteHandler(element.id)}
-            className="w-10 h-10 rounded-xl bg-red-800 flex justify-center items-center"
-          >
-            <BsTrash className="text-[25px] text-white opacity-50" />
-          </button>
+          <ActionDelete url={`admin/support-message/delete/${element.id}`} />
         </div>
       </td>
     </tr>

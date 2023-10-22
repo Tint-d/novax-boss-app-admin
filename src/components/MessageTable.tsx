@@ -1,7 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { FiEdit } from "react-icons/fi";
-import { BsTrash } from "react-icons/bs";
 
 import SearchTable from "./SearchTable";
 import useTable from "../hooks/useTable";

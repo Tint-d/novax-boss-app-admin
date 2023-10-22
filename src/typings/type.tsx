@@ -97,16 +97,16 @@ export interface EditAdminType {
   password?: string;
 }
 
-export interface EditSupportMessageType {
-  support_question: string;
-  support_answer: string;
+export interface MessageType {
+  support_question?: string;
+  support_answer?: string;
 }
 
 export interface ActionEditType
   extends EditBusinessType,
     EditCityType,
     EditAdminType,
-    EditSupportMessageType {}
+    MessageType {}
 
 export interface ModalFormValues
   extends GetPasswordType,
@@ -118,6 +118,7 @@ export interface ModalFormValues
 export interface FormValues
   extends AddBossFormValues,
     AddBusinessTypeFormValues,
+    MessageType,
     AddAdminFormValues,
     GetPasswordType,
     ActionEditType {}

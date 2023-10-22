@@ -1,4 +1,3 @@
-
 import AuthLayout from "../components/AuthLayout";
 import AddMessage from "../components/AddMessage";
 import MessageTable from "../components/MessageTable";

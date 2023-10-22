@@ -1,12 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import FormCard from "./FormCard";
-import { Textarea } from "@mantine/core";
-import SaveButton from "./SaveButton";
 import { useForm } from "@mantine/form";
+import { Textarea } from "@mantine/core";
+
+import FormCard from "./FormCard";
+import SaveButton from "./SaveButton";
 import useMutation from "../hooks/useMutation";
+import { MessageType } from "../typings/type";
 
 const AddMessage = () => {
-  const form = useForm({
+  const form = useForm<MessageType>({
     initialValues: {
       support_question: "",
       support_answer: "",

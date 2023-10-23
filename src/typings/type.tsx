@@ -99,6 +99,7 @@ export interface EditAdminType {
 }
 
 export interface MessageType {
+  // id?: number;
   support_question?: string;
   support_answer?: string;
 }

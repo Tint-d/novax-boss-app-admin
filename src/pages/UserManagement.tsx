@@ -1,5 +1,6 @@
 import AuthLayout from "../components/AuthLayout";
 import LoginUserTable from "../components/LoginUserTable";
+import withAuth from "../hocs/withAuth";
 
 const UserManagement = () => {
   return (
@@ -12,4 +13,4 @@ const UserManagement = () => {
   );
 };
 
-export default UserManagement;
+export default withAuth(UserManagement);

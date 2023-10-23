@@ -15,15 +15,13 @@ export default (
   const onMutate = async (params: MutationQueryProps) => {
     const { error, data: responseData } = (await mutate(params)) as any;
 
-    console.log(error);
-
     if (responseData?.success) {
       toast.success(responseData?.message);
       if (reset && form) form.reset();
     } else if (error) {
       toast.error(error?.data?.message);
     } else if (!responseData?.success) {
-      toast.error(responseData.message);
+      toast.success(responseData.message);
     }
 
     return responseData;

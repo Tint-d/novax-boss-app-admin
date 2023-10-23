@@ -73,6 +73,7 @@ export interface BaseApiResponseType extends GenerateCodeResponseType {
   success: boolean;
   message: string;
   data: object;
+  token?: string;
   error: FetchBaseQueryError | SerializedError;
 }
 
@@ -100,6 +101,11 @@ export interface EditAdminType {
 export interface MessageType {
   support_question?: string;
   support_answer?: string;
+}
+
+export interface LoginType {
+  email?: string;
+  password?: string;
 }
 
 export interface ActionEditType

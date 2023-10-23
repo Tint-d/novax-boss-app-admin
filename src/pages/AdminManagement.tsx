@@ -1,6 +1,7 @@
 import AddAdmin from "../components/AddAdmin";
 import AdminTable from "../components/AdminTable";
 import AuthLayout from "../components/AuthLayout";
+import withAuth from "../hocs/withAuth";
 
 const AdminManagement = () => {
   return (
@@ -13,4 +14,4 @@ const AdminManagement = () => {
   );
 };
 
-export default AdminManagement;
+export default withAuth(AdminManagement);

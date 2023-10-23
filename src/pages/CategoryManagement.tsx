@@ -3,6 +3,7 @@ import AddCity from "../components/AddCity";
 import AuthLayout from "../components/AuthLayout";
 import BusinessTypeTable from "../components/BusinessTypeTable";
 import CityTable from "../components/CityTable";
+import withAuth from "../hocs/withAuth";
 
 const CategoryManagement = () => {
   return (
@@ -23,4 +24,4 @@ const CategoryManagement = () => {
   );
 };
 
-export default CategoryManagement;
+export default withAuth(CategoryManagement);

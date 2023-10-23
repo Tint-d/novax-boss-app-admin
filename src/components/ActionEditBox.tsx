@@ -28,7 +28,7 @@ const ActionEditBox = ({
       form={form}
       onSubmitHandler={onSubmitHandler}
     >
-      {Object.entries(form.values).map(([key, value], index) => (
+      {Object.entries(form.values).map(([key], index) => (
         <TextInputComponent
           key={index}
           form={form}
@@ -38,7 +38,9 @@ const ActionEditBox = ({
         />
       ))}
 
-      <SaveButton type="submit" name="Edit" isLoading={isLoading} />
+      <div className="flex justify-center">
+        <SaveButton type="submit" name="Edit" isLoading={isLoading} />
+      </div>
     </ModalBox>
   );
 };

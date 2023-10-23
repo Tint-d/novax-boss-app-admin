@@ -20,6 +20,7 @@ const App = () => {
           },
         }}
       />
+
       <Routes />
     </div>
   );

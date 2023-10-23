@@ -1,12 +1,11 @@
-import SidebarTab from "../components/SidebarTab";
 import { BiLogOut } from "react-icons/bi";
 
+import SidebarTab from "../components/SidebarTab";
 import { SidebarTabs } from "../config/constant";
+import useLogout from "../hooks/useLogout";
 
 const Sidebar = () => {
-  const onLogoutHandler = () => {
-    alert("Logout");
-  };
+  const logout = useLogout();
 
   return (
     <div className="min-w-[350px] h-full overflow-y-auto">
@@ -23,7 +22,7 @@ const Sidebar = () => {
             Icon: BiLogOut,
             link: "",
           }}
-          onClick={onLogoutHandler}
+          onClick={logout}
         />
       </div>
     </div>

@@ -1,6 +1,7 @@
 import AddBoss from "../components/AddBoss";
 import AuthLayout from "../components/AuthLayout";
 import BossTable from "../components/BossTable";
+import withAuth from "../hocs/withAuth";
 
 const BossManagement = () => {
   return (
@@ -11,4 +12,4 @@ const BossManagement = () => {
   );
 };
 
-export default BossManagement;
+export default withAuth(BossManagement);

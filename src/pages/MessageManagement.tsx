@@ -1,6 +1,7 @@
 import AuthLayout from "../components/AuthLayout";
 import AddMessage from "../components/AddMessage";
 import MessageTable from "../components/MessageTable";
+import withAuth from "../hocs/withAuth";
 
 const MessageManagement = () => {
   return (
@@ -11,4 +12,4 @@ const MessageManagement = () => {
   );
 };
 
-export default MessageManagement;
+export default withAuth(MessageManagement);

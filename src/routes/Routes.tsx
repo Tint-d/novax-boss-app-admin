@@ -1,14 +1,18 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
 import { lazy, Suspense } from "react";
 import Fallback from "../utils/Fallback";
 import { paths } from "./path";
-import BossManagement from "../pages/BossManagement";
-import Dashboard from "../pages/Dashboard";
-import UserManagement from "../pages/UserManagement";
-import CategoryManagement from "../pages/CategoryManagement";
-import AdminManagement from "../pages/AdminManagement";
-import MessageManagement from "../pages/MessageManagement";
-const Register = lazy(() => import("../pages/Register"));
+
+const BossManagement = lazy(() => import("../pages/BossManagement"));
+const Dashboard = lazy(() => import("../pages/Dashboard"));
+const UserManagement = lazy(() => import("../pages/UserManagement"));
+const CategoryManagement = lazy(() => import("../pages/CategoryManagement"));
+const AdminManagement = lazy(() => import("../pages/AdminManagement"));
+const MessageManagement = lazy(() => import("../pages/MessageManagement"));
 const Login = lazy(() => import("../pages/Login"));
 
 const Routes = () => {
@@ -70,12 +74,8 @@ const Routes = () => {
       ),
     },
     {
-      path: paths.register,
-      element: (
-        <Suspense fallback={<Fallback />}>
-          <Register />
-        </Suspense>
-      ),
+      path: "*",
+      element: <Navigate to={"/"} />,
     },
   ]);
   return <RouterProvider router={router} />;

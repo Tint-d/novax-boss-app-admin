@@ -5,6 +5,7 @@ import DailyBossTable from "../components/DailyBossTable";
 import DailyNewUserTable from "../components/DailyNewUserTable";
 
 import UserStatCard from "../components/UserStatCard";
+import withAuth from "../hocs/withAuth";
 
 const Dashboard = () => {
   return (
@@ -24,4 +25,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default withAuth(Dashboard);

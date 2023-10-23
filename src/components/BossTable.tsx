@@ -1,30 +1,19 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { FiEdit } from "react-icons/fi";
-import { BsTrash } from "react-icons/bs";
 
 import SearchTable from "./SearchTable";
+import ActionDelete from "./ActionDelete";
+import ActionEdit from "./ActionEdit";
 import useTable from "../hooks/useTable";
-import useMutation from "../hooks/useMutation";
+import { BossCodeType } from "../typings/type";
 
 const BossTable = () => {
   const { setPage, page, value, setValue, data, total, totalPage, isLoading } =
     useTable("admin/user/action-code/list", "data");
 
-  const { mutate: deleteBoss } = useMutation();
-
-  const onDeleteHandler = async (id: number) => {
-    const data = await deleteBoss({
-      url: `admin/boss-address/delete/${id}`,
-      body: {},
-      method: "DELETE",
-    });
-    console.log(data);
-  };
-
   const theads = ["No", "Name", "Code", "Address Code", "Action"];
 
-  const rows = data?.map((element: any, index: number) => (
+  const rows = data?.map((element: BossCodeType, index: number) => (
     <tr
       key={element.id}
       className={` ${index % 2 === 1 ? "bg-hightlightColor" : "bg-rowColor"}`}
@@ -48,16 +37,16 @@ const BossTable = () => {
       </td>
       <td>
         <div className="flex gap-5">
-          <button className="w-10 h-10 rounded-xl bg-warining flex justify-center items-center">
-            <FiEdit className="text-[25px] text-hightlightColor" />
-          </button>
+          <ActionEdit
+            initialValues={{
+              boss_name: element.boss_name,
+              boss_number: element.boss_number,
+              code: element.code,
+            }}
+            url={`admin/user/action-code/edit/${element.id}`}
+          />
 
-          <button
-            onClick={() => onDeleteHandler(element.id)}
-            className="w-10 h-10 rounded-xl bg-red-800 flex justify-center items-center"
-          >
-            <BsTrash className="text-[25px] text-white opacity-50" />
-          </button>
+          <ActionDelete url={`admin/user/action-code/delete/${element.id}`} />
         </div>
       </td>
     </tr>

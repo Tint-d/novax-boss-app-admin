@@ -104,6 +104,13 @@ export interface MessageType {
   support_answer?: string;
 }
 
+export interface BossCodeType {
+  id?: string;
+  boss_name?: string;
+  boss_number?: string;
+  code?: string;
+}
+
 export interface LoginType {
   email?: string;
   password?: string;
@@ -113,7 +120,8 @@ export interface ActionEditType
   extends EditBusinessType,
     EditCityType,
     EditAdminType,
-    MessageType {}
+    MessageType,
+    BossCodeType {}
 
 export interface ModalFormValues
   extends GetPasswordType,

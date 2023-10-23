@@ -7,13 +7,12 @@ const baseQuery = fetchBaseQuery({
   baseUrl: config.baseUrl, // Your API base URL
   prepareHeaders: (headers) => {
     headers.set("Authorization", `Bearer ${config.token}`);
-
     return headers;
   },
 });
+
 export const adminApi = createApi({
   reducerPath: "adminApi",
-  // baseQuery: fetchBaseQuery({ baseUrl: "https://novax-mm.com/api/v1/" }),
   baseQuery,
   tagTypes: ["Data"],
   endpoints: (builder) => ({

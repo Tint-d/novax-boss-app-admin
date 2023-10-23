@@ -27,8 +27,6 @@ const Login = () => {
 
   const { mutate: login, isLoading } = useMutation();
 
-  console.log(form.errors);
-
   const onSubmitHandler = async (value: LoginType) => {
     const res = await login({
       url: "admin/auth/login",
@@ -37,7 +35,8 @@ const Login = () => {
     });
 
     if (res) {
-      Cookies.set("token", JSON.stringify(res.token));
+      Cookies.set("token", res.token);
+      Cookies.set("user", JSON.stringify(value));
 
       setTimeout(() => {
         navigate("/");

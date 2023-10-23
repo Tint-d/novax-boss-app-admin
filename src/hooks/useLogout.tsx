@@ -6,6 +6,8 @@ export default () => {
 
   return () => {
     Cookies.remove("token");
+    Cookies.remove("user");
+
     navigate("/login");
   };
 };

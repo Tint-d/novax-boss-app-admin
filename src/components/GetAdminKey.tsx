@@ -36,7 +36,9 @@ const GetAdminKey = ({
         value="adminKey"
       />
 
-      <SaveButton type="submit" name={btnName} isLoading={isLoading} />
+      <div className="flex justify-center">
+        <SaveButton type="submit" name={btnName} isLoading={isLoading} />
+      </div>
     </ModalBox>
   );
 };

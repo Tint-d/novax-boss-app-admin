@@ -2,10 +2,11 @@ import { IoPersonCircleOutline } from "react-icons/io5";
 import { useDisclosure } from "@mantine/hooks";
 import { Modal } from "@mantine/core";
 
+import useAuth from "../hooks/useAuth";
+
 const Navbar = () => {
   const [opened, { open, close }] = useDisclosure(false);
-
-  console.log(opened);
+  const { user } = useAuth();
 
   return (
     <div className="w-full h-[80px] flex justify-between items-center px-5">
@@ -35,8 +36,7 @@ const Navbar = () => {
       >
         <div className="w-full flex items-center gap-[20px] py-[30px] justify-center flex-col text-white ">
           <IoPersonCircleOutline size={100} />
-          <p className="text-[25px] font-[600]">Ko Han Thu</p>
-          <p className="text-[25px] font-[600]">kohanthu@gmail.com</p>
+          <p className="text-[25px] font-[600]">{user?.email}</p>
         </div>
       </Modal>
     </div>

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { useDisclosure } from "@mantine/hooks";
 import { useForm } from "@mantine/form";
 import { BsTrash } from "react-icons/bs";

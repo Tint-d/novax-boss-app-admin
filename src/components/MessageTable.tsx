@@ -5,8 +5,15 @@ import SearchTable from "./SearchTable";
 import useTable from "../hooks/useTable";
 import ActionDelete from "./ActionDelete";
 import ActionEdit from "./ActionEdit";
+import { AiOutlineEye } from "react-icons/ai";
+import { useState } from "react";
+import { MessageType } from "../typings/type";
+import { useDisclosure } from "@mantine/hooks";
+import ActionViewBox from "./ActionViewBox";
+import ActionView from "./ActionView";
 
 const MessageTable = () => {
+
   const { setPage, page, value, setValue, data, total, totalPage, isLoading } =
     useTable("admin/support-message/list", "supportMessages");
 
@@ -31,6 +38,7 @@ const MessageTable = () => {
 
       <td>
         <div className="flex gap-5">
+          <ActionView data={data} id={element.id} />
           <ActionEdit
             initialValues={{
               support_question: element.support_question,

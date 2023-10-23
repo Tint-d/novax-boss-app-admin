@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { UseFormReturnType } from "@mantine/form";
 
 import ModalBox from "./ModalBox";

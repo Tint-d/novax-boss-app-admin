@@ -5,10 +5,10 @@ import withAuth from "../hocs/withAuth";
 
 const MessageManagement = () => {
   return (
-    <AuthLayout>
+    <div>
       <AddMessage />
       <MessageTable />
-    </AuthLayout>
+    </div>
   );
 };
 

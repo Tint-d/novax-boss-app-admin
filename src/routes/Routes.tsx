@@ -6,6 +6,7 @@ import {
 import { lazy, Suspense } from "react";
 import Fallback from "../utils/Fallback";
 import { paths } from "./path";
+import Wrapper from "../components/Wrapper";
 
 const BossManagement = lazy(() => import("../pages/BossManagement"));
 const Dashboard = lazy(() => import("../pages/Dashboard"));
@@ -20,55 +21,67 @@ const Routes = () => {
     {
       path: paths.dashboard,
       element: (
-        <Suspense fallback={<Fallback />}>
-          <Dashboard />
-        </Suspense>
+        <Wrapper>
+          <Suspense fallback={<Fallback />}>
+            <Dashboard />
+          </Suspense>
+        </Wrapper>
       ),
     },
     {
       path: paths.boss,
       element: (
-        <Suspense fallback={<Fallback />}>
-          <BossManagement />
-        </Suspense>
+        <Wrapper>
+          <Suspense fallback={<Fallback />}>
+            <BossManagement />
+          </Suspense>
+        </Wrapper>
       ),
     },
     {
       path: paths.user,
       element: (
-        <Suspense fallback={<Fallback />}>
-          <UserManagement />
-        </Suspense>
+        <Wrapper>
+          <Suspense fallback={<Fallback />}>
+            <UserManagement />
+          </Suspense>
+        </Wrapper>
       ),
     },
     {
       path: paths.category,
       element: (
-        <Suspense fallback={<Fallback />}>
-          <CategoryManagement />
-        </Suspense>
+        <Wrapper>
+          <Suspense fallback={<Fallback />}>
+            <CategoryManagement />
+          </Suspense>
+        </Wrapper>
       ),
     },
     {
       path: paths.admin,
       element: (
-        <Suspense fallback={<Fallback />}>
-          <AdminManagement />
-        </Suspense>
+        <Wrapper>
+          <Suspense fallback={<Fallback />}>
+            <AdminManagement />
+          </Suspense>
+        </Wrapper>
       ),
     },
     {
       path: paths.message,
       element: (
-        <Suspense fallback={<Fallback />}>
-          <MessageManagement />
-        </Suspense>
+        <Wrapper>
+          <Suspense fallback={<Fallback />}>
+            <MessageManagement />
+          </Suspense>
+        </Wrapper>
       ),
     },
     {
       path: paths.login,
       element: (
-        <Suspense fallback={<Fallback />}>
+        <Suspense fallback={<Fallback fullHeight />}>
           <Login />
         </Suspense>
       ),

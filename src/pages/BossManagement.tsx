@@ -5,10 +5,10 @@ import withAuth from "../hocs/withAuth";
 
 const BossManagement = () => {
   return (
-    <AuthLayout>
+    <div>
       <AddBoss />
       <BossTable />
-    </AuthLayout>
+    </div>
   );
 };
 

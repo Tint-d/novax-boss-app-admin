@@ -9,8 +9,6 @@ export default <Props extends {}>(
   return (props: Props) => {
     const { token } = useAuth();
 
-    console.log(token);
-
     if (type == "private" && token) return <Navigate to="/" />;
     else if (type == "public" && !token) return <Navigate to="/login" />;
 

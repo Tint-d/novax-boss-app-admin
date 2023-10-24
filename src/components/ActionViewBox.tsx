@@ -11,7 +11,6 @@ interface PropsType {
 }
 
 const ActionViewBox = ({ opened, close, selectedItem }: PropsType) => {
-  console.log(selectedItem);
   return (
     <Modal
       opened={opened}

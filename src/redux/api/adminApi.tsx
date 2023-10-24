@@ -2,11 +2,14 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import config from "../../config/config";
 import { BaseApiResponseType, MutationQueryProps } from "../../typings/type";
+import useAuth from "../../hooks/useAuth";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: config.baseUrl, // Your API base URL
   prepareHeaders: (headers) => {
-    headers.set("Authorization", `Bearer ${config.token}`);
+    const { token } = useAuth();
+
+    headers.set("Authorization", `Bearer ${token}`);
     return headers;
   },
 });

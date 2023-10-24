@@ -19,6 +19,7 @@ const SidebarTab = ({
 
   useEffect(() => {
     if (pathname === link && !active) setActive(true);
+    else setActive(false);
   }, [pathname]);
 
   const onClickHandler = () => {

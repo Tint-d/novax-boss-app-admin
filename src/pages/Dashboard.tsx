@@ -1,4 +1,3 @@
-import AuthLayout from "../components/AuthLayout";
 import BossStatCard from "../components/BossStatCard";
 
 import DailyBossTable from "../components/DailyBossTable";
@@ -9,7 +8,7 @@ import withAuth from "../hocs/withAuth";
 
 const Dashboard = () => {
   return (
-    <AuthLayout>
+    <div>
       <div className="flex gap-8 mb-8">
         <div className="flex gap-8 items-start">
           <BossStatCard />
@@ -21,7 +20,7 @@ const Dashboard = () => {
         <DailyBossTable />
         <DailyNewUserTable />
       </div>
-    </AuthLayout>
+    </div>
   );
 };
 

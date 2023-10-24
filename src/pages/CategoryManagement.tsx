@@ -7,7 +7,7 @@ import withAuth from "../hocs/withAuth";
 
 const CategoryManagement = () => {
   return (
-    <AuthLayout>
+    <div>
       <div className="flex flex-col gap-8">
         <div className="flex gap-8">
           <div className="w-1/2">
@@ -20,7 +20,7 @@ const CategoryManagement = () => {
         <BusinessTypeTable />
         <CityTable />
       </div>
-    </AuthLayout>
+    </div>
   );
 };
 

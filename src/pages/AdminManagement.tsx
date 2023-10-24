@@ -5,12 +5,12 @@ import withAuth from "../hocs/withAuth";
 
 const AdminManagement = () => {
   return (
-    <AuthLayout>
+    <div>
       <div className="flex flex-col gap-8">
         <AddAdmin />
         <AdminTable />
       </div>
-    </AuthLayout>
+    </div>
   );
 };
 

@@ -2,6 +2,7 @@ import BossStatCard from "../components/BossStatCard";
 
 import DailyBossTable from "../components/DailyBossTable";
 import DailyNewUserTable from "../components/DailyNewUserTable";
+import TotalAdminStatCard from "../components/TotalAdminStatCard";
 import TotalCategoryStatCard from "../components/TotalCategoryStatCard";
 
 import UserStatCard from "../components/UserStatCard";
@@ -15,6 +16,7 @@ const Dashboard = () => {
           <BossStatCard />
           <UserStatCard />
           <TotalCategoryStatCard />
+          <TotalAdminStatCard />
         </div>
         <div className="w-full h-[300px] bg-tableBgColor" />
       </div>

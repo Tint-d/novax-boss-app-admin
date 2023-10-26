@@ -11,14 +11,11 @@ import withAuth from "../hocs/withAuth";
 const Dashboard = () => {
   return (
     <div>
-      <div className="flex gap-8 mb-8">
-        <div className="flex gap-8 items-start">
-          <BossStatCard />
-          <UserStatCard />
-          <TotalCategoryStatCard />
-          <TotalAdminStatCard />
-        </div>
-        <div className="w-full h-[300px] bg-tableBgColor" />
+      <div className="flex gap-8 mb-8 items-start">
+        <BossStatCard />
+        <UserStatCard />
+        <TotalAdminStatCard />
+        <TotalCategoryStatCard />
       </div>
       <div className="w-full flex gap-8 pr-8">
         <DailyBossTable />

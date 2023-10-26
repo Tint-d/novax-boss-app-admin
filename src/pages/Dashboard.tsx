@@ -2,6 +2,7 @@ import BossStatCard from "../components/BossStatCard";
 
 import DailyBossTable from "../components/DailyBossTable";
 import DailyNewUserTable from "../components/DailyNewUserTable";
+import TotalCategoryStatCard from "../components/TotalCategoryStatCard";
 
 import UserStatCard from "../components/UserStatCard";
 import withAuth from "../hocs/withAuth";
@@ -13,6 +14,7 @@ const Dashboard = () => {
         <div className="flex gap-8 items-start">
           <BossStatCard />
           <UserStatCard />
+          <TotalCategoryStatCard />
         </div>
         <div className="w-full h-[300px] bg-tableBgColor" />
       </div>

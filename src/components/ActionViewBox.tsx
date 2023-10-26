@@ -34,10 +34,14 @@ const ActionViewBox = ({ opened, close, selectedItem }: PropsType) => {
         },
       }}
     >
-      <p className=" text-warining text-[18px] mb-5">Question</p>
-      <p className="text-textColor mb-5">{selectedItem?.support_question}</p>
-      <p className=" text-warining text-[18px] mb-5">Answer</p>
-      <p className="text-textColor indent-5">{selectedItem?.support_answer}</p>
+      <p className=" text-warining text-[20px] mb-5">Question</p>
+      <p className="text-white indent-5 mb-5 text-[18px]">
+        {selectedItem?.support_question}
+      </p>
+      <p className=" text-warining text-[20px] mb-5">Answer</p>
+      <p className="text-white indent-5 text-[18px]">
+        {selectedItem?.support_answer}
+      </p>
     </Modal>
   );
 };

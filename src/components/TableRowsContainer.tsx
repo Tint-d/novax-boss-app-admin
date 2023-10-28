@@ -12,7 +12,7 @@ interface PropsType {
 const TableRowsContainer = ({ rows, theads, isLoading }: PropsType) => {
   return (
     <>
-      {rows.length > 0 ? (
+      {rows && rows.length > 0 ? (
         rows
       ) : (
         <tr>

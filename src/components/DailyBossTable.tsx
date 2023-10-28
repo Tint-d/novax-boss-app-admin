@@ -5,11 +5,12 @@ import DailyTable from "./DailyTable";
 const DailyBossTable = () => {
   const theads = ["No", "Name", "Boss Number"];
 
-  const { page, setPage, data, total, totalPage, isLoading } = useTable(
+  const { page, data, isLoading } = useTable(
     "admin/stats/recent-registered-boss-address",
     "bossAddress"
   );
-  const rows = data.map((element: any, index: number) => (
+
+  const rows = data?.map((element: any, index: number) => (
     <tr
       key={index}
       className={` ${index % 2 === 1 ? "bg-hightlightColor" : "bg-rowColor"}`}
@@ -30,6 +31,7 @@ const DailyBossTable = () => {
       </td>
     </tr>
   ));
+
   return (
     <div className="w-[55%]">
       <DailyTable
@@ -39,9 +41,6 @@ const DailyBossTable = () => {
         tableTitle={"Recent new Boss"}
         btnName={"Review"}
         route={"/boss"}
-        total={total}
-        totalPages={totalPage}
-        setPage={setPage}
       />
     </div>
   );

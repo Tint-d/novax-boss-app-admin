@@ -40,7 +40,7 @@ const ActionDelete = ({ url, withAdminKey }: PropsType) => {
     <>
       <button
         onClick={onDeleteHandler}
-        className="w-10 h-10 rounded-xl bg-red-800 flex justify-center items-center"
+        className="w-10 h-10 rounded-xl bg-red-800 hover:bg-red-900 active:translate-y-[2px] flex justify-center items-center"
       >
         <BsTrash className="text-[25px] text-white opacity-50" />
       </button>

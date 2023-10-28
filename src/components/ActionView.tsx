@@ -21,7 +21,7 @@ const ActionView = ({ data, id }: PropsType) => {
     <>
       <button
         onClick={(e) => onViewHandler(e, id)}
-        className="w-10 h-10 rounded-xl bg-green-800 flex justify-center items-center"
+        className="w-10 h-10 rounded-xl bg-green-800 hover:bg-green-900 active:translate-y-[2px] flex justify-center items-center"
       >
         <AiOutlineEye className="text-[25px] text-white opacity-50" />
       </button>

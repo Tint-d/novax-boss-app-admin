@@ -38,7 +38,7 @@ const ActionEdit = ({ initialValues, url }: PropsType) => {
     <>
       <button
         onClick={open}
-        className="w-10 h-10 rounded-xl bg-warining flex justify-center items-center"
+        className="w-10 h-10 rounded-xl bg-warining hover:bg-opacity-80 active:translate-y-[2px] flex justify-center items-center"
       >
         <FiEdit className="text-[25px] text-hightlightColor" />
       </button>

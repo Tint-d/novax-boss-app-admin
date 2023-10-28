@@ -1,7 +1,6 @@
 import { Table } from "@mantine/core";
 import { Link } from "react-router-dom";
 
-import PaginationComponent from "./PaginationComponent";
 import TableRowsContainer from "./TableRowsContainer";
 
 interface PropsType {
@@ -10,9 +9,6 @@ interface PropsType {
   tableTitle: string;
   btnName: string;
   route: string;
-  total: number;
-  totalPages: number;
-  setPage: React.Dispatch<React.SetStateAction<number>>;
   isLoading: boolean;
 }
 
@@ -22,9 +18,6 @@ const DailyTable = ({
   tableTitle,
   btnName,
   route,
-  total,
-  setPage,
-  totalPages,
   isLoading,
 }: PropsType) => {
   return (
@@ -33,7 +26,8 @@ const DailyTable = ({
         <p className="text-textColor text-[20px] font-[400]">{tableTitle}</p>
         <Link
           to={route}
-          className="px-[20px] py-[5px] bg-hightlightColor text-textColor rounded-full text-[20px] font-[400]"
+          className="px-[20px] py-[5px] bg-hightlightColor border border-hightlightColor 
+         hover:border-warining  hover:bg-transparent hover:text-warining text-textColor rounded-full text-[20px] font-[400]"
         >
           {btnName}
         </Link>
@@ -57,12 +51,6 @@ const DailyTable = ({
             />
           </tbody>
         </Table>
-        <div className="w-full overflow-x-auto flex justify-between items-center my-5 gap-10">
-          <p className="text-textColor text-[20px] whitespace-nowrap">
-            Total: {total}
-          </p>
-          <PaginationComponent setPage={setPage} totalPages={totalPages} />
-        </div>
       </div>
     </div>
   );

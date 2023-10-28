@@ -7,11 +7,11 @@ import useTable from "../hooks/useTable";
 const DailyNewUserTable = () => {
   const theads = ["No", "Name"];
 
-  const { page, setPage, total, totalPage, data, isLoading } = useTable(
+  const { page, data, isLoading } = useTable(
     "admin/stats/recent-registered-users",
     "users"
   );
-  const rows = data.map((element: any, index: number) => (
+  const rows = data?.map((element: any, index: number) => (
     <tr
       key={element.id}
       className={`${
@@ -20,7 +20,6 @@ const DailyNewUserTable = () => {
     >
       <td className="text-[20px] font-[400] px-[20px]">
         <p className="text-textColor text-[20px]">
-          {" "}
           {(page - 1) * 20 + index + 1}
         </p>
       </td>
@@ -41,9 +40,6 @@ const DailyNewUserTable = () => {
         tableTitle={"Recent new User"}
         btnName={"Review"}
         route={"/user"}
-        total={total}
-        totalPages={totalPage}
-        setPage={setPage}
       />
     </div>
   );

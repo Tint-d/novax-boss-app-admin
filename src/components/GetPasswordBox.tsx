@@ -33,7 +33,9 @@ const GetPasswordBox = ({
         value="adminKey"
       />
 
-      <SaveButton type="submit" name="Get Password" isLoading={isLoading} />
+      <div className="w-full flex justify-center">
+        <SaveButton type="submit" name="Get Password" isLoading={isLoading} />
+      </div>
     </ModalBox>
   );
 };

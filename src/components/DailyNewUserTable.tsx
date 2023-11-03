@@ -11,6 +11,9 @@ const DailyNewUserTable = () => {
     "admin/stats/recent-registered-users",
     "users"
   );
+
+  console.log(data);
+
   const rows = data?.map((element: any, index: number) => (
     <tr
       key={element.id}
@@ -31,6 +34,7 @@ const DailyNewUserTable = () => {
       </td>
     </tr>
   ));
+
   return (
     <div className="w-[45%] ">
       <DailyTable

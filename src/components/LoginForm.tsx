@@ -15,7 +15,7 @@ interface PropsType {
 
 const LoginForm = ({ form, onSubmit, isLoading }: PropsType) => {
   return (
-    <div className="w-full h-screen py-[80px] bg-black flex flex-col items-center">
+    <div className="w-full min-h-screen py-[80px] bg-black flex flex-col items-center">
       <div className="w-[230px] h-[230px]">
         <img src={Logo} alt="logo" className="w-full h-full object-cover" />
       </div>
